@@ -3,9 +3,62 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	
-</head>
+	<script src="../jquery.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		//a. Selecciona todos los módulos de primero
+		var modulosPrimeros = $('ul li a');
+		var modulosPrimeros1 = $('a');
 
+		//b. Selecciona el módulo Sistemas Informáticos
+		var si = $('a[href="SImod.html"]');
+		var si1 = $(':contains("Sistemas Informáticos")');
+
+		//c. Selecciona el módulo que va detrás de Sistemas Informáticos
+		var var1 = $('a[href="SImod.html"]').next();
+		var var2 = $(':contains("Sistemas Informáticos")').next();
+
+		//d. Selecciona los módulos que van detrás de Sistemas Informáticos
+		var var3 = $('a[href="SImod.html"]').nextAll();
+		var var4 = $(':contains("Sistemas Informáticos")').nextAll();
+
+		//e.Selecciona los módulos que tengan el atributo href
+		var var5 = $('[href]');
+
+		//f.Selecciona los módulos que no tengan el atributo href
+		var var6 = $('ul>li :not("[href]")');
+
+		//g. Selecciona aquellos módulos que contengan la cadena 'mod'
+		var var7 = $('[href*="mod"]');
+		var var8 = $('ul li a[href*="mod"]');
+
+		//h. Selecciona aquellos módulos que empiecen por la cadena 'mod'
+		var var9 = $('[href^="mod"]');
+		var var10 = $('ul li a[href^="mod"]');
+
+		//i. Selecciona aquellos módulos que terminen con la cadena '.html'
+		var var11 = $('[href$="mod"]');
+		var var12 = $('ul li a[href$="mod"]');
+
+		//j. Selecciona todas las horas de los módulos de segundo
+		var var13 = $('ul>li>ul').find('li:eq(1)');
+
+		//k. Selecciona los ítems vacíos y añade el contenido 'Nodo vacío'
+		var var14 = $('li:empty');
+		var14.append('Nodo vacío.');
+
+		//l. Selecciona los módulos DWESE, DAW y EIE
+		var var15 = $('li').filter(function(){
+			
+		});
+
+		//m. Añade el atributo href al módulo de FOL (inventa su valor).
+		var var16 = $('a').last();
+		var16.attr('href','mod-FOL');
+
+	});
+	</script>
+</head>
 <body>
 	<p>Primero</p>
 	<ul>
@@ -22,33 +75,33 @@
 		<li>DWESE
 			<ul>
 				<li>Desarrollo Web en Entorno Servidor</li>
-				<li>10 horas</li>		
+				<li>10 horas</li>
 			</ul>
 		</li>
 		<li>DWECL
 			<ul>
 				<li>Desarrollo Web en Entorno Cliente</li>
-				<li>7 horas</li>		
+				<li>7 horas</li>
 			</ul>
 		</li>
 		<li>DAW
 			<ul>
 				<li>Despliegue de Aplicaciones Web</li>
-				<li>3 horas</li>		
+				<li>3 horas</li>
 			</ul>
 		</li>
 		<li>DIWEB
 			<ul>
 				<li>Diseño de Interfaces Web</li>
-				<li>6 horas</li>		
+				<li>6 horas</li>
 			</ul>
 		</li>
 		<li>EIE
 			<ul>
 				<li>Entorno e Iniciativa Empresarial</li>
-				<li>4 horas</li>		
+				<li>4 horas</li>
 			</ul>
 		</li>
-	</ul>		
+	</ul>
 </body>
 </html>
