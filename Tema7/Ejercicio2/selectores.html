@@ -48,8 +48,7 @@
 		var14.append('Nodo vacío.');
 
 		//l. Selecciona los módulos DWESE, DAW y EIE
-		var var15 = $('li[value="DWESE"]');
-		console.log(var15);
+		var var15 = $('li:contains("DWESE"), li:contains("DAW"), li:contains("EIE")');
 
 		//m. Añade el atributo href al módulo de FOL (inventa su valor).
 		var var16 = $('a').last();
