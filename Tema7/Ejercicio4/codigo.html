@@ -76,7 +76,8 @@
 			p.css('top',`${e.pageY}`);
 			p.css('left',`${e.pageX}`);
 			p.css('background-color','yellow');
-			$(this).off('hover');
+			p.css('z-index','2');
+			$(this).off();
 		});
 
 		//8. Ahora aparecerá el número de horas cuando el usuario haga clic sobre el nombre del módulo.
