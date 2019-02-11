@@ -69,24 +69,36 @@
 		//7. Al pasar el ratón por cada uno de los títulos de los módulos de
 		//segundo se mostrará la cantidad de horas semanales. Esta información
 		// emergente se mostrará a continuación de donde ubiquemos el ratón. Utiliza hover.
-		$('li[class]').hover(function(e){
-			var p = $(`<p>${$(this).parent().attr('data-hours')} horas</p>`);
-			$(document.body).append(p);
-			p.css('position','absolute');
-			p.css('top',`${e.pageY}`);
-			p.css('left',`${e.pageX}`);
-			p.css('background-color','yellow');
-			p.css('z-index','2');
-			$(this).off();
-		});
+
+		// $('li[class]').hover(function(e){
+		// 	var p = $(`<p>${$(this).parent().attr('data-hours')} horas</p>`);
+		// 	$(document.body).append(p);
+		// 	p.css('position','absolute');
+		// 	p.css('top',`${e.pageY}`);
+		// 	p.css('left',`${e.pageX}`);
+		// 	p.css('background-color','yellow');
+		// 	p.css('z-index','2');
+		// 	$(this).off();
+		// });
 
 		//8. Ahora aparecerá el número de horas cuando el usuario haga clic sobre el nombre del módulo.
 		//Realiza una delegación de eventos utilizando on.
 
+		// $('li[class]').on('click',function(e){
+		// 	var p = $(`<p>${$(this).parent().attr('data-hours')} horas</p>`);
+		// 	$(this).append(p);
+		// 	$(this).off();
+		// });
 
 		//9. Modifica el ejercicio 8 para que al hacer click sobre el nombre aparezca el tipo de modalidad
 		//(presencial). Esta información será pasada a la función que trata el
 		//evento a través del método on.
+
+		$('li[class]').on('click',null,{modalidad:'presencial'},function(e){
+			var p = $(`<p>Modalidad: ${e.data.modalidad}</p>`);
+			$(this).append(p);
+			$(this).off();
+		});
 
 	});
 	</script>
