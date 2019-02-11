@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        div {
+            position: absolute;
+        }
+    </style>
+    <script src="../jquery.js"> </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    // 1. Crea un div de 800x70 píxeles. Al hacer doble clic redimensionarlo a 250x250 píxeles y si se hace
+    // doble clic nuevamente retornar al tamaño 800x70. Escribir debajo tanto sus nuevas dimensiones
+    // como la posición que ocupa dentro del navegador.
+    var div = $(`<div id='1' style='width:800px; height:70px; border:solid 1px;'></div>`);
+    $(document.body).append(div);
+    p();
+    $(div).append(p);
+    $('div').dblclick(function(){
+        if ($(this).css('width') == '250px') {
+            $(this).css('width','800px');
+            $(this).css('height','70px');
+            p();
+        }else {
+            $(this).css('width','250px');
+            $(this).css('height','250px');
+            p();
+        }
+    });
+
+    function p(){
+    var p = $(`<p>
+        Ancho: ${$('div').css('width')}, Alto: ${$('div').css('height')}
+        </p>`);
+    $('div').html(p);
+    }
+
+//     2. Crea un script que añada debajo del div un botón que al pulsar en él, mueva el div 100px a la
+// izquierda y lo haga más pequeño 150 px. El div estará inicialmente ubicado en las coordenadas
+// (0,100).
+    $('div').css('top',0);
+    $('div').css('left','100px');
+    boton();
+
+    function boton(){
+        $(document.body).append(`<button>Boton 1</button>`);
+        $('button').click(function(){
+            $('div').css('left',`${parseInt($('div').css('left'))+100}px`);
+            $('div').css('width',`${parseInt($('div').css('width'))-150}px`);
+        });
+    }
+
+//     3. Modifica el ejercicio 1, añade dos botones debajo del div. Cada vez que se pulse sobre uno de ellos
+// añadirá 100 px al ancho y alto y cuando se pulse en el otro reducirá dichas dimensiones en 50px.
+// Utiliza primero css() y luego animate. ¿Qué diferencias hay?
+    });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
