@@ -15,7 +15,23 @@
 						background-color: lightgrey;}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="plugin6.jQuery.js"> </script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		//1. Realiza un plugin que al pulsar sobre el enlace Más información se muestre la foto y la información
+		// meteorológica correspondientes a cada tour. Desarrolla dos funciones, una para cada tipo de información.
+		// $(':button').masInformacion();
 
+		// 2. Modifica el plugin anterior para que la información se muestre directamente (sin hacer click) una vez
+		// cargado el documento.
+		// $(':button').todaInformacion()
+
+		// 3. Modifica el ejercicio 1 para que la función que muestra la información del tiempo no esté asociada al evento
+		// click y que se ejecute justo después de la que muestra la imagen del tour.
+		$(':button').info3();
+
+	});
+	</script>
 </head>
 <body>
 <ul>
