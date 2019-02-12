@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <script src="../jquery.js"> </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        //La diferencia es que prop te toma propiedad y attr toma atributos, un atributo
+        // es aquello que tenemos en la etiqueta para personalizarla y la propiedad aquello a lo
+        //que podemos acceder desde un objeto javascript.
+        //Antes teniamos un metodo para consultar ambas dos.
+
+        //Ejemplo prop:
+        $(elemento).prop('checked');
+
+        //Ejemplo attr:
+        $(elemento).css('width');
+
+        //Ambos podemos usarlos como getter o setter, si le pasamos un parametro, consultará su valor,
+        //si le pasamos como segundo parametro algun valor válido, actuará como setter y modificará su valor.
+
+    });
+    </script>
+    <body>
+        <ul>
+            <li>Hola 1</li>
+            <li>Hola 2</li>
+            <li>Hola 3</li>
+            <li>Hola 4</li>
+        </ul>
+    </body>
+</html>
