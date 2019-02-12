@@ -7,8 +7,14 @@
         div {
             position: absolute;
         }
+        button {
+            position: relative;
+            display: block;
+            top: 20%;
+        }
     </style>
     <script src="../jquery.js"> </script>
+    <script src="plugin5.jQuery.js"> </script>
     <script type="text/javascript">
     $(document).ready(function(){
     // 1. Crea un div de 800x70 píxeles. Al hacer doble clic redimensionarlo a 250x250 píxeles y si se hace
@@ -49,13 +55,50 @@
         $('button').click(function(){
             $('div').css('left',`${parseInt($('div').css('left'))+100}px`);
             $('div').css('width',`${parseInt($('div').css('width'))-150}px`);
+            p();
         });
     }
 
 //     3. Modifica el ejercicio 1, añade dos botones debajo del div. Cada vez que se pulse sobre uno de ellos
 // añadirá 100 px al ancho y alto y cuando se pulse en el otro reducirá dichas dimensiones en 50px.
 // Utiliza primero css() y luego animate. ¿Qué diferencias hay?
-    $()
+$(document.body).append(`<button>Boton Agrandar</button>`);
+$('button').click(function(){
+    var pixeles = prompt('Cuanto desea agrandar?')
+    $('div').css('height',`${parseInt($('div').css('height'))+pixeles}px`);
+    $('div').css('width',`${parseInt($('div').css('width'))+pixeles}px`);
+    p();
+});
+
+$(document.body).append(`<button>Boton Disminuir</button>`);
+$('button').click(function(){
+    var pixeles = prompt('Cuanto desea disminuir?')
+    $('div').animate({height: `${parseInt($('div').css('height'))-pixeles}px`});
+    $('div').animate({width: `${parseInt($('div').css('width'))-pixeles}px`});
+    p();
+});
+
+// 4. Modifica el ejercicio 3 para que la cantidad de píxeles que se amplia y reduce el div pueda ser
+// indicado por el usuario.
+
+    //Hecho arriba
+
+// 5. Realiza un script que oculte y muestre un div de forma rápida.
+    $('div').parpadear();
+
+// 6. Vuelve a realizar la misma tarea pero ahora debe pasar 2 segundos entre un efecto y otro.
+    $('div').parpadear2Seg();
+
+// 7. Desarrolla un script que al pulsar en un botón se mueva un div 100 px a la derecha y a continuación,
+// aumente el tamaño de la letra de su contenido a 30px. Utiliza animate() y css().
+$(document.body).append(`<button id='7'>Boton 7</button>`);
+$('#7').click(function(){
+    $('div').mueveDiv();
+});
+
+
+
+
 
     });
     </script>
