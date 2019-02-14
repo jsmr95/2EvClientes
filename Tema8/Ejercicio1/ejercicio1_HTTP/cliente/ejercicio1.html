@@ -5,7 +5,6 @@
 		<title>Ejercicio 1 - Comprobar disponibilidad del login</title>
 
 		<script type="text/javascript">
-
 // 		EJERCICIO 1
 // Un ejemplo de validación compleja es la que consiste en comprobar si un
 // nombre de usuario escogido está libre o ya lo utiliza otro usuario. Como es una
@@ -33,6 +32,30 @@
 		</form>
 		<br><br>
 		<div id="disponibilidad"></div>
+		<script type="text/javascript">
+		document.getElementsByTagName('input')[1].addEventListener('click', loadDoc);
 
+		function loadDoc() {
+			var xmlhttp;
+			var contenidosRecibidos = '';
+			var nodoMostrarResultados = document.getElementById('disponibilidad');
+			var contenidosAMostrar = '';
+
+			xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+					contenidosAMostrar = xmlhttp.responseText;
+
+					nodoMostrarResultados.innerHTML = contenidosAMostrar;
+				}
+				else if(xmlhttp.readyState==4 && xmlhttp.status!=200){
+					alert("Ha ocurrido el siguiente error: " + xmlhttp.statusText);
+				}
+			}
+
+			xmlhttp.open("GET","../servidor/compruebaDisponibilidad.php",true);
+			xmlhttp.send();
+		}
+		</script>
 	</body>
 </html>
