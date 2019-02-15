@@ -4,7 +4,7 @@
 
 		<meta charset="utf-8">
 		<title> Listas desplegables encadenadas - json </title>
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript">
 		// a) El script del servidor utilizado para cargar las provincias se llama
 		// cargaProvinciasJSON.php y la respuesta del servidor tiene el siguiente formato:
@@ -13,16 +13,7 @@
 		// cargaMunicipiosJSON.php y la respuesta del servidor tiene el siguiente formato:
 		// { "0014": "Alegría-Dulantzi", "0029": "Amurrio", ... }
 		window.onload = function(){
-		var READY_STATE_COMPLETE=4;
-		var peticion_http = null;
-
-		function inicializa_xhr() {
-			if (window.XMLHttpRequest) {
-				return new XMLHttpRequest();
-			} else if (window.ActiveXObject) {
-				return new ActiveXObject("Microsoft.XMLHTTP");
-			}
-		}
+			$('#provincia').load("cargaProvinciasJSON.php");
 
 		function ordenar(){
 			$("select").each(function(index,elem) {
