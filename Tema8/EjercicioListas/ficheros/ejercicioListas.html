@@ -13,7 +13,6 @@
 		// cargaMunicipiosJSON.php y la respuesta del servidor tiene el siguiente formato:
 		// { "0014": "Alegría-Dulantzi", "0029": "Amurrio", ... }
 		window.onload = function(){
-			$('#provincia').load("cargaProvinciasJSON.php");
 
 		function ordenar(){
 			$("select").each(function(index,elem) {
@@ -34,6 +33,31 @@
 			});
 		}
 	}
+
+	function cargaProvincias()
+	{
+		$.get("http://localhost/2EvClientes/Tema8/EjercicioListas/ficheros/cargaProvinciasJSON.php")
+		.done(tomaDatos)
+		.fail();
+	}
+
+	function tomaDatos(datos)
+	{
+		var json = JSON.parse(datos);
+		var $provincias = $('#provincia');
+
+		$.each(json, (k, v)=>{
+			$(`<option value="${k}">${v}</option>`)
+			.appendTo($provincias);
+		});
+	}
+
+	function error(request, errorMessage)
+	{
+		alert(`Error: ${errorMessage}`);
+	}
+
+	cargaProvincias();
 
 		</script>
 	</head>
