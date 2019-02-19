@@ -32,7 +32,6 @@
 
 			});
 		}
-	}
 
 	function cargaProvincias()
 	{
@@ -52,13 +51,47 @@
 		});
 	}
 
+	function cargaMunicipios()
+	{
+		if ((prov = $('#provincia').val()) != '-selecciona-') {
+			$.post("http://localhost/2EvClientes/Tema8/EjercicioListas/ficheros/cargaMunicipiosJSON.php", {
+				provincia: prov
+			})
+			.done(tomaMunicipios)
+			.fail(error);
+		}else {
+			var $municipios = $('#municipio');
+			$municipios.children().remove(); //Si vuelvo a -selecciona- borro los municipios que haya de busquedas anteriores
+			$('<option>-selecciona una provincia-</option>')
+			.appendTo($municipios);
+		}
+	}
+
+	function tomaMunicipios(datos)
+	{
+		var json = JSON.parse(datos);
+		var $municipios = $('#municipio');
+		$municipios.children().remove(); //Borro una posible lista anterior
+		$(`<option>-selecciona una provincia-</option>`)
+		.appendTo($municipios);
+
+		$.each(json, (k, v)=>{
+			$(`<option value="${k}">${v} </option>`)
+			.appendTo($municipios);
+		});
+	}
+
 	function error(request, errorMessage)
 	{
 		alert(`Error: ${errorMessage}`);
 	}
 
 	cargaProvincias();
-
+	$('#provincia').on('change',function(){
+		cargaMunicipios();
+		ordenar();
+	});
+}
 		</script>
 	</head>
 
