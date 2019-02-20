@@ -3,7 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	
+	<script src="../../../jquery.js"> </script>
+	<script type="text/javascript">
+		$(()=>{
+			function siRespuesta(data)
+			{
+				for (var i = 0; i < data.length; i++) {
+					$('ul').append(`<li>${data[i].flightNumber}-${data[i].time} </li>`)
+				}
+			}
+
+			function peticion(){
+		        //jQuery.post( url [, data ] [, success ] [, dataType ] )
+		        $.get("servidor.php", siRespuesta);
+		    }
+
+			$(':button').click(peticion);
+		})
+	</script>
 </head>
 <body>
 	<button class="update-available-flights">Ver vuelos</button>
@@ -12,6 +29,6 @@
 
 	  </ul>
 	</div>
-	
+
 </body>
 </html>
