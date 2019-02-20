@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ejercicio Anexo 1</title>
+
+<script src="../../../jquery.js">
+</script>
+<script type="text/javascript">
+window.onload = function(){
+    function siRespuesta(r){
+
+        // Crear HTML con las respuestas del servidor
+        $('#respuesta').html(r);   // Mostrar la respuesta del servidor en el div con el id "respuesta"
+    }
+
+    function peticion(){
+        // Realizar la petici�n
+        var parametros = {
+            fecha_nacimiento: $('#fecha_nacimiento').val(),
+            codigo_postal: $('#codigo_postal').val(),
+            telefono: $('#telefono').val()
+        };
+
+        //jQuery.post( url [, data ] [, success ] [, dataType ] )
+        $.post("http://localhost/2EvClientes/Tema8/PeticionesAjax1/ficheros/ejercicio%201/servidor.php"
+        , parametros, siRespuesta);
+    }
+
+
+
+    $(':button').click(peticion);
+}
+
+</script>
+
+</head>
+<body>
+<form>
+	<label for="fecha_nacimiento">Fecha de nacimiento:</label>
+	<input type="text" id="fecha_nacimiento" name="fecha_nacimiento" />
+	<br/>
+	<label for="codigo_postal">Codigo postal:</label>
+	<input type="text" id="codigo_postal" name="codigo_postal" /><br/>
+	<label for="telefono">Telefono:</label>
+	<input type="text" id="telefono" name="telefono" /><br/>
+	<input type="button" value="Validar datos"/>
+</form>
+<div id="respuesta"></div>
+</body>
+</html>
