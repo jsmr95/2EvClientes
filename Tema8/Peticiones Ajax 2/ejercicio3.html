@@ -10,20 +10,32 @@
                 function siRespuesta(data)
                 {
                     var x = $('#texto').val();
-                    $('strong').remove();
-                    $('li').remove();
+                    $('p').remove();
+                    $('table').remove();
                     if (x == '1DAW') {
-                        $('ul').append('<strong>1DAW</strong>');
+                        $(document.body).append('<p>Lista de alumnos matriculados en 1 DAW</p><table border="1">');
+                        $('table').append('<tr><th>Nombre</th><th>DNI</th><th>Acceso</th> </tr>');
                         for (var j = 0; j < data[0].length; j++) {
-                            $(`ul`)
-                            .append(`<li> Nombre: ${data[0][j].nombre}, Dni: ${data[0][j].dni}, Acceso: ${data[0][j].acceso} </li>`);
+                            $(`table`)
+                            .append(`<tr>
+                                <th> ${data[0][j].nombre}</th>
+                                <th> ${data[0][j].dni} </th>
+                                <th>${data[0][j].acceso}  </th>
+                            </tr>`);
                         }
+                        $(document.body).append('</table>');
                     }else if (x == '2DAW') {
-                        $('ul').append('<strong>2DAW</strong>');
+                        $(document.body).append('<p>Lista de alumnos matriculados en 2 DAW</p><table border="1">');
+                        $('table').append('<tr><th>Nombre</th><th>DNI</th><th>Acceso</th> </tr>');
                         for (var j = 0; j < data[1].length; j++) {
-                            $(`ul`)
-                            .append(`<li> Nombre: ${data[1][j].nombre}, Dni: ${data[1][j].dni}, Acceso: ${data[1][j].acceso} </li>`);
+                            $(`table`)
+                            .append(`<tr>
+                                <th> ${data[1][j].nombre}</th>
+                                <th> ${data[1][j].dni} </th>
+                                <th>${data[1][j].acceso}  </th>
+                            </tr>`);
                         }
+                        $(document.body).append('</table>');
                     }else {
                         $(document.body).append('<h1>No has introducido un curso válido!</h1>')
                     }
@@ -44,12 +56,9 @@
         </script>
     </head>
     <body>
-
         <span>Introduzca el curso a consultar:
             <input type="text" id="texto" placeholder="1DAW ó 2DAW" />
             <button id="boton">Ver cursos</button>
         </span>
-        <ul>
-        </ul>
     </body>
 </html>
