@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../jquery.js"> </script>
+        <script type="text/javascript">
+            $(()=>{
+
+                function siRespuesta(data)
+                {
+                    $('li ul').each(function(i){
+                        for (var j = 0; j < data[i].length; j++) {
+                            $(`li ul:eq(${i})`)
+                            .append(`<li> Nombre: ${data[i][j].nombre}, Dni: ${data[i][j].dni}, Acceso: ${data[i][j].acceso} </li>`);
+                        }
+                    });
+                }
+
+                function peticion()
+                {
+                    $.get('servidor.php',siRespuesta);
+                }
+
+                $('#boton').click(peticion);
+            });
+        </script>
+    </head>
+    <body>
+        <button id="boton">Ver cursos</button>
+        <ul>
+            <li style="font-size: 29px"><strong>1 Daw</strong>
+                <ul>
+
+                </ul>
+            </li>
+            <li style="font-size: 29px"><strong>2 Daw</strong>
+                <ul>
+
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>

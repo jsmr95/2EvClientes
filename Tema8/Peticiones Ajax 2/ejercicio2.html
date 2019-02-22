@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../jquery.js"> </script>
+        <script type="text/javascript">
+            $(()=>{
+
+                function siRespuesta(data)
+                {
+                    var x = $('#texto').val();
+                    $('strong').remove();
+                    $('li').remove();
+                    if (x == '1DAW') {
+                        $('ul').append('<strong>1DAW</strong>');
+                        for (var j = 0; j < data[0].length; j++) {
+                            $(`ul`)
+                            .append(`<li> Nombre: ${data[0][j].nombre}, Dni: ${data[0][j].dni}, Acceso: ${data[0][j].acceso} </li>`);
+                        }
+                    }else if (x == '2DAW') {
+                        $('ul').append('<strong>2DAW</strong>');
+                        for (var j = 0; j < data[1].length; j++) {
+                            $(`ul`)
+                            .append(`<li> Nombre: ${data[1][j].nombre}, Dni: ${data[1][j].dni}, Acceso: ${data[1][j].acceso} </li>`);
+                        }
+                    }else {
+                        $(document.body).append('<h1>No has introducido un curso válido!</h1>')
+                    }
+                }
+
+                function parametro()
+                {
+
+                }
+
+                function peticion()
+                {
+                    $.get('servidor.php' ,siRespuesta);
+                }
+
+                $('#boton').click(peticion);
+            });
+        </script>
+    </head>
+    <body>
+
+        <span>Introduzca el curso a consultar:
+            <input type="text" id="texto" placeholder="1DAW ó 2DAW" />
+            <button id="boton">Ver cursos</button>
+        </span>
+        <ul>
+        </ul>
+    </body>
+</html>
