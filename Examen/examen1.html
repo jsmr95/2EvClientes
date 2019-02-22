@@ -3,7 +3,24 @@
   <head>
     <meta charset="UTF-8">
     <title>Resumen de la compra</title>
-    <link rel="stylesheet" href="compra.css" type="text/css">
+    <script src="jquery.js"> </script>
+    <script type="text/javascript">
+        $(()=>{
+            cargaAccesorios();
+        });
+
+        function siRespuesta(data)
+        {
+            for (var i = 0; i < data.length; i++) {
+                $('#accesorios').append(`<option>${data[i].etiqueta}</option>`);
+            }
+        }
+
+        function cargaAccesorios()
+        {
+            $.get('accesorios.php',siRespuesta);
+        }
+    </script>
   </head>
   <body>
     <h1>Resumen de la compra</h1>
