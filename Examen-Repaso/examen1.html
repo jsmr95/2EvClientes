@@ -8,11 +8,13 @@
         $(()=>{
             cargaAccesorios();
         });
+        var accesorios = new Array();
 
         function siRespuesta(data)
         {
             for (var i = 0; i < data.length; i++) {
                 $('#accesorios').append(`<option>${data[i].etiqueta}</option>`);
+                accesorios.push(data[i]);
             }
         }
 
