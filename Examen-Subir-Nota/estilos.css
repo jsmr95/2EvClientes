@@ -1,0 +1,21 @@
+.profesor {
+    width: 100px;
+    height: auto;
+    background-color: grey;
+    border-radius: 15px;
+    border: 1px;
+    border-style: dashed;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.cursos {
+    width: 100px;
+    height: auto;
+    background-color: grey;
+    border-radius: 15px;
+    border: 1px;
+    border-style: dashed;
+    padding: 10px;
+    margin-bottom: 10px;
+}

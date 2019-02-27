@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ejercicio 1</title>
+		<script src="jquery-1.12.1.min.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="estilos.css">
+		<script type="text/javascript">
+		$(()=>{
+			cargaAccesorios();
+			cambio();
+			limpiar();
+			muestraOculta();
+		});
+
+		var arrM = [];
+		var arrP = [];
+
+		//Realizo dos respuestas ya que son dos peticiones y cada respuesta,
+		//genero un array distinto, para no mezclar (que se podría)
+		function siRespuesta1(data)
+		{
+			for (var i = 0; i < data.info.length; i++) {
+				arrM[i] = data.info[i];
+			}
+		}
+
+		function siRespuesta2(data)
+		{
+			for (var i = 0; i < data.info.length; i++) {
+				arrP[i] = data.info[i];
+			}
+			// console.log(JSON.parse(data.info[0]));
+		}
+
+		function cargaAccesorios()
+		{
+			$.post('servidor.php',{ op: 'cursos'},siRespuesta1);
+			$.post('servidor.php',{ op: 'profesores'},siRespuesta2);
+		}
+
+		function cambio()
+		{
+			$(':radio').change(function(e){
+				$('.profesor').remove();
+				$('.cursos').remove();
+				if ($(':checked').val() == 'profesores') {
+					for (var i = 0; i < arrP.length; i++) {
+						var str = `<div class='profesor'><img src='images/${arrP[i].Imagen}.jpg'`;
+						for (var p in arrP[i]) {
+							if (p == 'Autor') {
+								str = str + `data-nombre='${arrP[i][p]}'`;
+							}else if (p == 'Fecha de incoporación') {
+								str = str + `data-fecha='${arrP[i][p]}'`;
+							}else if (p == 'Imagen') {
+								str = str + `data-imagen='${arrP[i][p]}'></img></div>`;
+							}
+						}
+						var div = $(str);
+						$(document.body).append(div);
+					}
+					infoProfesor();
+				}else {
+					for (var i = 0; i < arrM.length; i++) {
+						var div = $(`<div class='cursos'><img src='images/${arrM[i].Imagen}.jpg'></img></div>`);
+						$(document.body).append(div);
+					}
+				}
+			});
+		}
+
+		function infoProfesor()
+		{
+			$('.profesor').click(function(e){
+				var lista = $(`<span class='infoP'><ul>
+					<li>Nombre: ${$(e.target).attr('data-nombre')}</li>
+					<li>Fecha de incorporación: ${$(e.target).attr('data-fecha')}</li>
+					<li>Imagen: ${$(e.target).attr('data-imagen')}</li>
+					</ul></span>`);
+				$(this).css('width','350px');
+				$(this).append(lista);
+			});
+		}
+
+		//funciones para limpiar y para mostrar/ocultar
+		function limpiar()
+		{
+			$('#limpiar').click(function(){
+				$('.profesor').remove();
+				$('.cursos').remove();
+				$(':checked').attr('checked', false);
+			});
+		}
+
+		function muestraOculta()
+		{
+			$('#muestraOculta').click(function(){
+				//Compruebo si se muestra alguno de los dos y se borraría
+				if ($('.profesor').length > 0 || $('.cursos').length > 0) {
+					$('.profesor').remove();
+					$('.cursos').remove();
+				}else{
+					//si no, mostramos al que esté seleccionado
+					if ($(':checked').val() == 'profesores') {
+						for (var i = 0; i < arrP.length; i++) {
+							var div = $(`<div class='profesor'><img src='images/${arrP[i].Imagen}.jpg'></img></div>`);
+							$(document.body).append(div);
+						}
+					}else if ($(':checked').val() == 'cursos') {
+						for (var i = 0; i < arrM.length; i++) {
+							var div = $(`<div class='cursos'><img src='images/${arrM[i].Imagen}.jpg'></img></div>`);
+							$(document.body).append(div);
+						}
+					}
+				}
+			});
+		}
+
+		</script>
+	</head>
+	<body>
+		<h1> Academia Doñana</h1>
+		<form id='info'>
+			<h2>¿Qué información desea consultar?</h2>
+			<input type='radio' value='profesores' name='tipo'>Profesores</input>
+			<input type='radio' value='cursos' name='tipo'>Cursos</input>
+			<br><br>
+		</form>
+		<input type='button' value='Mostrar/ocultar' id="muestraOculta"></input>
+		<input type='button' value='Limpiar' id='limpiar'></input><br>
+		<br>
+	</body>
+</html>
