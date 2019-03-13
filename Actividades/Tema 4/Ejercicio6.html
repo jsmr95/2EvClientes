@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- 6. Crea un array con los números impares del 1 al 21.
+a. Calcula el sumatorio de dichos números impares e imprime el resultado.
+b. Muestra en orden inverso el array creado anteriormente.
+c. Lea un valor que escriba el usuario y búsquelo en el array. Indique si la búsqueda
+tuvo éxito indicando la posición o si no tuvo éxito.
+d. En caso de tener éxito, borra su valor.
+e. Muéstrelo ordenado de forma ascendente, y a continuación de forma descendente.
+-->
+    </head>
+    <body>
+        <script type="text/javascript">
+        var numeros = [];
+        function creaArray(){
+            for (var i = 1; i < 22; i++) {
+                if (i%2 != 0) {
+                    numeros.push(i);
+                }
+            }
+        }
+
+        function sumar(){
+            var res = 0;
+            for (var i = 0; i < numeros.length; i++) {
+                res += numeros[i];
+            }
+            console.log(`La suma de todos los impares es ${res}.\n`);
+        }
+
+        function invertir(){
+            var numerosInvertidos = numeros.slice();
+            numerosInvertidos.reverse();
+            console.log(`El array invertido es: ${numerosInvertidos}\n`);
+        }
+
+        function busca(){
+            var num = parseInt(prompt('Introduzca el valor a buscar:'));
+            if (numeros.indexOf(num) >= 0) {
+                alert(`El número ${num} SI está en el array, en la posicion ${numeros.indexOf(num)}.\n`);
+                numeros.splice(numeros.indexOf(num),1);
+                console.log(`Número ${num} borrado --> ${numeros}`);
+            } else {
+                alert(`El número ${num} NO está en el array.\n`);
+            }
+        }
+
+        function ordenacion(){
+            console.log(`Ordenado ascendentemente: ${numeros}\n`);
+            console.log(`Ordenado descendentemente: ${numeros.sort(function(a,b){return b-a})}\n`);
+        }
+
+        creaArray();
+        sumar();
+        invertir();
+        busca();
+        ordenacion();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!--5. Realizar un script que, al pulsar un botón del ratón, el color de fondo del cuadro de mensaje
+debe ser amarillo (#FFFF00) y cuando se pulsa una tecla, el color de fondo debe ser azul
+(#CCE6FF). Al volver a mover el ratón, el color de fondo vuelve a ser blanco.
+Modifica el ejemplo anterior para que cuando se pulse sobre el ratón se muestren las
+coordenadas respecto del navegador y la pantalla. Cuando se pulse una tecla se deberá mostrar
+tanto el carácter como el código correspondiente.-->
+    <style>
+        #caja{position:auto;
+              width: auto;
+              height: auto;
+              top: 0px;
+              left:0px;
+              border-style:solid;}
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            window.addEventListener('click',raton);
+            window.addEventListener('keydown',teclado);
+            window.addEventListener('mousemove',function(){caja.style.background = 'white';})
+        };
+
+            function raton(e){
+                caja.style.background = '#FFFF00';
+                pulsador.innerHTML = 'Ratón';
+                cx1 = e.clientX;
+                cy1 = e.clientY;
+                cx2 = e.screenX;
+                cy2 = e.screenY;
+                opcion1.innerHTML =`Coordenadas Navegador: (${cx1},${cy1})`;
+                opcion2.innerHTML =`Coordenadas Pantalla: (${cx2},${cy2})`;
+            }
+
+            function teclado(e){
+                caja.style.background = '#CCE6FF';
+                pulsador.innerHTML = 'Teclado';
+                opcion1.innerHTML =`Caracter: (${e.key})`;
+                opcion2.innerHTML =`Código correspondiente: (${e.code})`;
+            }
+
+    </script>
+    </head>
+    <body>
+        <div name='caja' id="caja">
+            <h2 id='pulsador'></h2>
+            <h4 id='opcion1'></h4>
+            <h4 id='opcion2'></h4>
+        </div>
+    </body>
+</html>

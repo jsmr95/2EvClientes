@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .caja {
+        border: 1px solid;
+        width: 150px;
+        height: 150px;
+        float: left;
+        margin: 20px;
+        background-color: #94E1FF;
+        align-content: center;
+      }
+      .res {
+        border: 1px solid;
+        width: 150px;
+        height: 150px;
+        float: left;
+        margin: 20px;
+        background-color: #0066ff;
+      }
+      p {
+        margin: 30px;
+        font-size: 85px;
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload = function(){
+        generar.addEventListener('click',generaNumeros);
+        comparar.addEventListener('click',compara);
+      }
+      //Variable para saber si al menos hay dos divs que comparar
+      var valoresHijos = [];
+
+      //generamos numeros aleatoriamente y creamos o reemplazamos el textNode
+      function generaNumeros(){
+        var divs = document.getElementsByTagName('div');
+
+        for (var i = 0; i < divs.length - 1; i++) {
+          var num = Math.floor(Math.random()*11);
+          var p = document.createElement('p');
+          p.appendChild(document.createTextNode(num));
+
+          if (divs[i].children.length == 0) {
+            divs[i].appendChild(p);
+          }else {
+            divs[i].replaceChild(p,divs[i].children[0]);
+          }
+        }
+        actualiza();
+      }
+
+      //Comparamos si hay al menos dos divs con numeros
+      function compara(){
+        var divs = document.getElementsByTagName('div');
+        actualiza();
+
+        if (valoresHijos.length >= 2) {
+          //Si hay al menos 2, reemplazamos el último div, dependiendo si ya tiene textNode
+          //Busco de entre todos los divs anteriores, el maximo valor, para eliminarlo, ya que se ha creado en el ultimo.
+          for (var i = 0; i < divs.length-1; i++) {
+            if (divs[i].children[0].firstChild.nodeValue == Math.max(...valoresHijos)) {
+                divs[divs.length-1].replaceChild(divs[i].children[0],divs[divs.length-1].children[0]);
+                break;
+            }
+          }
+        }else {
+          alert('Para comparar, debe haber mínimo dos números.');
+      }
+    }
+
+    function actualiza(){
+      var divs = document.getElementsByTagName('div');
+      valoresHijos = [];
+      pos = 0;
+      for (var i = 0; i < divs.length-1; i++) {
+        if (divs[i].children.length == 1) {
+          valoresHijos[pos] = divs[i].children[0].firstChild.nodeValue;
+          pos++;
+        }
+      }
+    }
+
+    </script>
+  </head>
+  <body>
+    <div class="caja" > </div>
+    <div class="caja" > </div>
+    <div class="res" ><p></p> </div>
+    <br>
+    <input type="button" id="generar" value="Genera"><br><br>
+    <input type="button" id="comparar" value="Compara">
+  </body>
+</html>

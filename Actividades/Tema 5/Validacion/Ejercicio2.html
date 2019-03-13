@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- Ejercicio 2 - BOLETIN 2 -->
+        <script type="text/javascript">
+            window.onload = function(){
+                hijos.addEventListener('blur',validar);
+            }
+            function validar(){
+                if (this.checkValidity() == false) {
+                    this.setCustomValidity('Error: El numero no es correcto.');
+                  this.reportValidity();
+                  this.value = '';
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <form>
+
+        <input type="number" id="hijos" max="10" min="0" required>
+        <input type="submit" id="ver" value="Ver">
+    </form>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 2. Ahora de cada módulo se desea guardar su nombre y duración. El mapa estará formado por
+el par módulo y alumnos matriculados (módulo, numAlumnos). Utiliza la estructura que sea
+más conveniente.-->
+  </head>
+  <body>
+    <script type="text/javascript">
+      //creo el módulo
+      function Modulo(nombre,duracion){
+        this.nombre = nombre;
+        this.duracion = duracion;
+      }
+
+      //Y creo la estrucutra WeakMap y los añado.
+      var informacion = new WeakMap();
+      var mod1 = new Modulo('DAW',200);
+      informacion.set(mod1,30);
+      informacion.set(new Modulo('DIW',250),25);
+      informacion.set(new Modulo('DWES',300),33);
+      //Un WeakMap no es iterable -->
+        console.log(informacion);
+    </script>
+  </body>
+</html>

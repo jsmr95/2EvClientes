@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- 21. Confecciona una expresión regular que valide el ingreso del nombre de un día de la semana
+y un número de 1 o 2 dígitos -->
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var diaSe = prompt('Introduzca dia de la semana y el digito: (ej: Martes 15)');
+      var patt = /^(Lunes|Martes|Miercoles|Jueves|Viernes|Sabado|Domingo)\s([1-9]|[1-2]\d|3[01])$/i;
+      console.log(patt.test(diaSe));
+    </script>
+  </body>
+</html>

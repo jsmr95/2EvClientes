@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- 18. Solicita el ingreso de la coordenada de un punto. El formato a ingresar por teclado es:
+(999,999)
+Los números pueden tener entre 1 y 3 dígitos.-->
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var coor = prompt("Introduzca una coordenada con este formato (999,999): ");
+      var ptt = /^\(\d{1,3}\,\d{1,3}\)$/;
+      console.log(ptt.test(coor));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <!--13.Pide al usuario una cadena de texto 5 veces. Haz estadísticas sobre la frecuencia de
+aparición de cada letra. Muestra por pantalla dichas ocurrencias.  -->
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var abcd=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q",
+    "r","s","t","u","v","w","x","y","z"];
+    var frases = "";
+    var cont = 0;
+
+    function pideFrases(){
+      for(var i=0; i<5;i++){
+        var frase = prompt(`Introduzca una frase(nº${i+1})`);
+        frases += frase;
+      }
+    }
+
+    function conteo(){
+      for(var i=0;i<abcd.length;i++){
+        cont = 0;
+        for(var j = 0; j<frases.length;j++){
+          if(abcd[i] == frases.charAt(j).toLowerCase()){
+            cont++;
+          }
+        }
+        if(cont != 0)
+        console.log(`La letra '${abcd[i]}' se encuentra ${cont} veces.`);
+      }
+    }
+
+
+    pideFrases();
+    conteo();
+
+    </script>
+  </body>
+</html>

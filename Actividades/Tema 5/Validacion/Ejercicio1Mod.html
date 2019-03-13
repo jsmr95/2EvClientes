@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="./cookies.js"></script>
+    <script type="text/javascript">
+      window.onload = function(){
+        var forms = document.getElementsByName('form');
+        for (var i = 0; i < forms.length; i++) {
+          this.addEventListener('change',comprueba);
+        }
+        guardar.addEventListener('click',guardarCookies);
+        ver.addEventListener('click',verCookie);
+        verTodas.addEventListener('click',verTodasC);
+        eliminar.addEventListener('click',eliminarC);
+        eliminarTodas.addEventListener('click',eliminarTodasC);
+      }
+
+      var expresiones = new Map();
+      expresiones.set('dni',/^(\d{1,8}|\d{8}[a-z]{1})$/gi);
+      expresiones.set('nombre',/^[a-záéíóúñ]+ ([a-záéíóúñ]+\s)?([a-záéíóúñ]+ )?[a-záéíóúñ]+$/gi);
+      expresiones.set('fecha',/^([01][0-9]|3[01])\/(0[0-9]|1[12])\/(19[0-9]{2}|(200[0-9]|201[^9]))$/gi);
+      expresiones.set('email',/^\w+@[a-zñ]+\.[a-z]{2,3}$/gi);
+      expresiones.set('web',/^http:\/\/www\.\w+\.[a-z]{2,3}$/gi);
+      expresiones.set('contra',/^\w{8,10}$/gi);
+      expresiones.set('contraConf',/^\w{8,10}$/gi);
+
+      function comprueba(e){
+          validarCampo(e.target.id, expresiones.get(this.value));
+      }
+
+      function validarCampo(valor, patron){
+        var x = document.getElementById(valor).value;
+        if (!expresiones.get(valor).test(x)) {
+            console.log(`ERROR: El formato de ${valor} no es correcto!`);
+            document.getElementById(valor).value = "";
+          }
+      }
+
+      function guardarCookies(){
+        var forms = document.getElementsByName('form');
+        var validos = true;
+        var d = new Date(2019,11,30);
+        for (var i = 0; i < forms.length; i++) {
+            if (forms[i].value == '') {
+                validos = false;
+            }
+        }
+        if (!validos) {
+            alert('Para poder guardar, debe de haber validado todos los campos...');
+        }else {
+            for (var i = 0; i < forms.length; i++) {
+                setCookie(forms[i].id, forms[i].value,d);
+            }
+        }
+      }
+
+      function verCookie() {
+          var c = prompt('Introduzca el nombre de la cookie:');
+          if (getCookie(c)) {
+              alert(getCookie(c))
+          }else {
+              alert('No se ha encontrado ninguna cookie con ese nombre.');
+          }
+      }
+
+      function verTodasC(){
+          var cookies = document.cookie.split(';');
+          if (cookies == '') {
+              alert('No hay cookies que mostrar.');
+          }else {
+              for (var i = 0; i < cookies.length; i++) {
+                  var c = cookies[i].split("=");
+                  alert(`${c[0].trim()}: ${decodeURIComponent(c[1].trim())}`);
+              }
+          }
+      }
+
+
+      function eliminarC(){
+          var c = prompt('Introduzca el nombre de la cookie.');
+          if (getCookie(c)) {
+              delCookie(c);
+          }else {
+              alert('No se ha encontrado ninguna cookie con ese nombre.');
+          }
+      }
+
+      function eliminarTodasC(){
+          var cookies = document.cookie.split(';');
+          if (cookies == '') {
+              alert('No hay cookies que eliminar.')
+          }else {
+              for (var i = 0; i < cookies.length; i++) {
+                  var c = cookies[i].split("=");
+                  delCookie(c[0].trim());
+              }
+          }
+      }
+
+    </script>
+  </head>
+  <body>
+    <form action="" method="post">
+      DNI:<input id="dni" type="text" name="form" value=""><br><br> <!--Formato: 99999999-X -->
+      Nombre: <input id="nombre" type="text" name="form" value=""><br><br><!--Al menos un nombre y un apellido, max 2 nombre y 2 apellidos -->
+      F. Nac: <input id='fecha' type="text" name="form" value=""><br><br><!--Formato: dd/mm/yyyy -->
+      E-mail: <input id="email" type="text" name="form" value=""><br><br><!--Formato: xxx@yyy.zzz  -->
+      Pag. Web:<input id="web" type="text" name="form" value=""><br><br><!--Formato: http://www.xxx.yyy -->
+      Contraseña:<input id="contra" type="password" name="form" value=""><br><br><!--Entre 8 y 10 caracteres -->
+      Confirmar contraseña:<input id="contraConf" type="password" name="form" value=""><br><br><!--Entre 8 y 10 caracteres -->
+      <input type="button" id="guardar" value="Guardar">
+      <input type="button" id="ver" value="Ver cookie">
+      <input type="button" id="verTodas" value="Ver todas las cookies">
+      <input type="button" id="eliminar" value="Eliminar Cookie">
+      <input type="button" id="eliminarTodas" value="Eliminar todas las cookie">
+    </form>
+  </body>
+</html>

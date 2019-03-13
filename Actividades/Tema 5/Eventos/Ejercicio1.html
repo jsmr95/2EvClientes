@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+
+            window.onload = function(){
+                window.addEventListener('mousedown',identificaBoton);
+            }
+            
+            function identificaBoton(e){
+                switch (e.button) {
+                    case 0:
+                        console.log('Se ha pulsado click con el boton izquierdo.');
+                        break;
+                    case 1:
+                        console.log('Se ha pulsado click con el boton central.');
+                        break;
+                    case 2:
+                        console.log('Se ha pulsado click con el boton derecho.');
+                        break;
+                }
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

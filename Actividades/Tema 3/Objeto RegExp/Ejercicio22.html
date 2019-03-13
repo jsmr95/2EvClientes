@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- 22. Buscar la primera palabra de cada frase -->
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var texto = prompt('Introduzca un texto: ');
+      var ptt = /(^|\.\s)([A-ZÑÁ-Ú0-9]\w*)/gm;
+      var res = ptt.exec(texto);
+      while (res != null){
+        console.log(RegExp.$2);
+        res = ptt.exec(texto);
+      }
+    </script>
+  </body>
+</html>

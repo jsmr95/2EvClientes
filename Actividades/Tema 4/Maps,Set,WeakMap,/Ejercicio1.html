@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 1. Utiliza un map almacenar información sobre módulos impartidos en este IES (“DWECL”,
+“Desarrollo Web en Entorno Cliente). Añade la información con posterioridad a la creación
+de la estructura :
+a. Muestra cuántos módulos hay almacenados
+b. Muestra el contenido de la estructura
+c. Devuelve las abreviaturas de todos los módulos guardados
+d. Devuelve el nombre completo de todos los módulos
+e. Consulta si está el módulo “DAW”
+f. Si está, elimínalo. Vuelve a mostrar el contenido de la estructura-->
+  </head>
+  <body>
+    <script type="text/javascript">
+      var informacion = new Map();
+      informacion.set("DWECL","Desarrollo Web en Entorno Cliente");
+      informacion.set("DIW","Desarrollo de Interfaces Web");
+      informacion.set("DWES","Desarrollo Web en Entorno de Servidores");
+      informacion.set('DAW','Despliegue de aplicaciones Web');
+      //a)
+      console.log(`-----¿Cuántos módulos hay?: ${informacion.size}-----\n`);
+
+      //b)
+      console.log(`-----Muestra el contenido del map:----- \n`);
+      var array = informacion.entries();
+      console.log(array); //Se puede ver el MapIterator directamente o pintarse bonito con el for de abajo.
+      for (var [k,v] of array) {
+        console.log(`${k} = ${v}\n`);
+      }
+
+      //C
+      console.log(`-----Muestra solo las abreviaturas:-----\n`);
+      var abreviaturas = informacion.keys();
+      console.log(abreviaturas); //Se puede ver el MapIterator directamente o pintarse bonito con el for de abajo.
+      for (var k of abreviaturas) {
+        console.log(`${k}\n`);
+      }
+
+      //d
+      console.log(`-----Muestra solo los nombres completos:-----\n`);
+      var nombres = informacion.values();
+      console.log(nombres); //Se puede ver el MapIterator directamente o pintarse bonito con el for de abajo.
+      for (var v of nombres) {
+        console.log(`${v}\n`);
+      }
+
+      //e
+      console.log(`-----¿Está el módulo DAW?: ${informacion.has('DAW')}-----\n`);
+
+      //f
+      informacion.delete('DAW');
+      console.log('-----Borro el módulo DAW y muestro el map: -----\n');
+      var array = informacion.entries();
+      console.log(array); //Se puede ver el MapIterator directamente o pintarse bonito con el for de abajo.
+      for (var [k,v] of array) {
+        console.log(`${k} = ${v}\n`);
+      }
+
+    </script>
+  </body>
+</html>

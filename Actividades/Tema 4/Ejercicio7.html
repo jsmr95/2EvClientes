@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- 7. Crea un script que tome una serie de palabras ingresadas por el usuario y almacene esas
+palabras en un array. Posteriormente, manipula ese array para mostrar en una nueva
+ventana los siguientes datos:
+•Todas las palabras.
+•Todas las palabras colocadas al revés.
+•La primera palabra ingresada por el usuario
+•La última palabra ingresada por el usuario
+•El número de palabras presentes en el array
+•Las palabras ordenadas de la 'a' a la 'z':
+•Las palabras Ordenadas de la 'z' a la 'a'-->
+    </head>
+    <body>
+        <script type="text/javascript">
+        var palabras = [];
+
+        function metePalabras(){
+            palabras = prompt('Introduzca las palabras separadas por coma:').split(',');
+        }
+
+        function muestraTodo(){
+            for (var i = 0; i < palabras.length; i++) {
+                console.log(`Palabra ${i+1}: ${palabras[i]}`);
+            }
+        }
+
+        metePalabras();
+        muestraTodo();
+        //PRIMERA PALABRA (Se podria usar shift si te pide que saque la palabra)
+        console.log(`\nLa primera palabra es: ${palabras[0]}`);
+        //ULTIMA PALABRA (Se podria usar pop si te pide que saque la palabra)
+        console.log(`\nLa última palabra es: ${palabras[palabras.length-1]}`);
+        //LONGITUD DEL ARRAY
+        console.log(`\nNúmero de palabras: ${palabras.length}`);
+        //ORDENAR ASCENDENTEMENTE
+        console.log(`\nOrdenado ascendentemente: ${palabras.sort()}`);
+        //ORDENAR DESCENDENTEMENTE
+        console.log(`\nOrdenado descendentemente: ${palabras.reverse(palabras.sort())}`);
+        //para ordenar numeros --> palabras.sort(function(a,b){return b-a});
+        </script>
+    </body>
+</html>

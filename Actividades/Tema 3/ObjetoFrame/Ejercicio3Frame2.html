@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <form>
+            <br />
+            El resultado de la potencia es:
+            <br /><br />
+            <input type="button" value="Calcular" onclick="calcular()">
+            <input type="text" >
+        </form>
+        <script type="text/javascript">
+            function calcular(){
+                var base = window.parent.document.forms[0].elements[0].value;
+                var exp = window.parent.document.forms[0].elements[1].value;
+                var ptt = /^\d$/;
+                if (base != "" && exp != "" && ptt.test(base) && ptt.test(exp)){
+                    var res = Math.pow(base,exp);
+                    document.forms[0].elements[1].value = res;
+                }else {
+                    alert('No has introducido una base o exponente válido.')
+                }
+
+            }
+        </script>
+    </body>
+</html>

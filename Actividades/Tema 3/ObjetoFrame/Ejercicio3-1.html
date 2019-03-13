@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!--3) Crear un documento web que contenga un iframe. En el documento principal se mostrará el resultado de
+una potencia. Los valores (base, exponente) y la función que calcule la potencia estarán en el iframe.
+Realizar el ejercicio al contrario.
+        -->
+    </head>
+    <body>
+        <iframe src="Ejercicio3Frame1.html" width="400" height="250"> hola</iframe>
+        <form>
+            <br />
+            El resultado de la potencia es:
+            <br />
+            <input type="button" value="Calcular" onclick="calcular()">
+            <input type="text" >
+        </form>
+        <script type="text/javascript">
+            function calcular(){
+                var base = window.frames[0].document.forms[0].elements[0].value;
+                var exp = window.frames[0].document.forms[0].elements[1].value;
+
+                var ptt = /^\d$/;
+                if (base != "" && exp != "" && ptt.test(base) && ptt.test(exp)){
+                    var res = Math.pow(base,exp);
+                    document.forms[0].elements[1].value = res;
+                }else {
+                    alert('No has introducido una base o exponente válido.')
+                }
+            }
+        </script>
+    </body>
+</html>

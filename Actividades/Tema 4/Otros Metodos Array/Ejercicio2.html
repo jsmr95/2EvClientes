@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- ● Crea un vector con 5 valores numéricos.
+● Comprueba si son todos enteros positivos.
+● Devuelve en un nuevo array el triple sus valores.
+● Calcula el resultado de multiplicar todos los valores del
+nuevo array.-->
+  </head>
+  <body>
+    <script type="text/javascript">
+      var array = [3,-5,10,-2,2];
+      console.log(`Array original: ${array}`);
+      console.log(`Son todos los numeros positivos?: ${array.every(elem => elem >= 0 && Number.isInteger(elem))}`);
+      var triple = array.map(elem => elem*3);
+      console.log(`Triple del array original: ${triple}`);
+      console.log(`Resultado de multiplicar todos los valores del array triple:
+          ${triple.reduce((total,num) => total*num, 1)}`);
+    </script>
+  </body>
+</html>

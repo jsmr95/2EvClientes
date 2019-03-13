@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 11. Modifica el ejercicio anterior para que ahora sea una calculadora modo programador y te
+permita convertir entre bases numéricas. -->
+  </head>
+  <body>
+    <script type="text/javascript">
+    var opcion;
+    function menu(){
+      console.log("-------Calculadora------- \n"+
+                      "Pulse 1 para cambiar de decimal a cualquier base \n"+
+                      "Pulse 2 para cambiar cualquier base a decimal \n"+
+                      "Pulse 3 para salir. \n");
+
+      opcion = parseInt(prompt("Introduzca una opcion: "));
+    }
+
+      while( opcion != 3){
+          menu();
+          if(opcion != 3){
+          var num1 = parseInt(prompt("Introduzca el numero: "));
+        }
+        switch (opcion) {
+          case 1:
+            var base = parseInt(prompt('Introduzca la base: '));
+            if(base == 2){
+            alert(num1.toString(2));
+          }else if(base == 8){
+            alert(num1.toString(8));
+          }else if(base == 16){
+            alert(num1.toString(16));
+          }else{
+            alert('No ha introducido una base válida.');
+          }
+            break;
+          case 2:
+          var base = parseInt(prompt('Introduzca la base en la que esta el número: '));
+            if(base == 2){
+              alert(parseInt(num1,2));
+            }else if(base == 8){
+              alert(parseInt(num1,8));
+            }else if(base == 16){
+              alert(parseInt(num1,16));
+            }else{
+              alert('No ha introducido una base válida.');
+            }
+            break;
+          case 3:
+          var r = confirm("Desea salir de la Calculadora?  ");
+            if (r == true){
+              alert("Decidiste salir de la Calculadora");
+            }else {
+              alert("Quieres continuar en la Calculadora");
+              menu();
+            }
+            break;
+          default: alert("No ha seleccionado una opcion correcta.")
+    }
+      }
+    </script>
+  </body>
+</html>

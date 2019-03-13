@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+      <!-- Crear una pseudoclase llamada Factura que permita instanciar objetos de ese tipo de la siguiente forma:
+Factura(cliente,elementos,info)
+Cliente es un objeto que guarda los datos del cliente ( nombre, dirección, teléfono y nif ) y
+elementos es un array que contiene la siguiente información por cada uno de los ítems que puede tener
+la factura: descripción, cantidad y precio.
+Info, sobre cada factura se desea guardar los siguientes datos: base imponible, iva, total y
+forma de pago. Por defecto, tendrán como valores 0, 21,0,"contado" respectivamente.-->
+<!-- Añade con posterioridad a la pseudoclase Factura:
+ Propiedad empresa que guardará información sobre la empresa que emite la factura ( nombre,
+dirección, teléfono y cif ).
+ Método que calcule el total de la factura (con el IVA aplicado);
+ Método que muestre el total.
+Realiza una instanciación de Factura y muestra su total.
+Modifica el ejercicio para que todas las propiedades sean privadas y el método calculaTotal. El método
+muestraTotal será privilegiado.-->
+  </head>
+  <body>
+    <script type="text/javascript">
+    //Factura
+      function Factura(cliente, elementos, {base,iva,total,formaPago} = {base:0,iva:21,total:0,formaPago:'Contado'}){
+        this.cliente = cliente;
+        this.elementos = elementos;
+        this.info = {base,iva,total,formaPago};
+      }
+
+      //Cliente
+      function Cliente(nombre,direccion,telefono,nif){
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.nif = nif;
+      }
+
+      //Añado propiedad empresa a factura
+      Factura.prototype.empresa = {nombre:'Almacen 10 S.L',direccion:'Avd. Rota, SN',telefono:956986321,cif:'A98X32M'};
+      //Añado funcion calculaTotal a factura
+      Factura.prototype.calculaTotal = function(){
+        var cont = 0;
+        for (var i = 0; i < this.elementos.length; i++) {
+          var cant = this.elementos[i].cantidad;
+          var precio = this.elementos[i].precio;
+          var res = cant * precio;
+          cont += res;
+        }
+        this.info.base = cont;
+        var iva = this.info.iva / 100 + 1;
+        var total = this.info.base*iva;
+        return total.toFixed(2);
+      }
+      //Añado funcion muestraTotal a factura
+      Factura.prototype.muestraTotal = function(){
+        return console.log(`El total de la factura ha sido: ${this.calculaTotal()}`);
+      }
+
+      //Instancio una Factura y muestro el total
+      var c1 = new Cliente('Jose','Perú, 10',954348978,'49039084K');
+      var elem = [{descripción:'item1',cantidad:4, precio:2.5},{descripción:'item2',cantidad:3, precio:1.5}];
+      var info = {base:10,iva:21,total:2,formaPago:'visa'};
+      var fac = new Factura(c1,elem,info);
+      fac.muestraTotal();
+      console.log(fac.info.base);
+      console.log(fac.cliente); //Muestra el Obj Cliente
+    </script>
+  </body>
+</html>

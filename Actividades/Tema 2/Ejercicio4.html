@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!--
+    Realiza un script que muestre en el documento los múltiplos de 8 comprendidos
+    entre dos números que se solicitarán al usuario. No importa el orden en el que
+     los inserte el usuario, siempre se presentarán de menor al mayor, ambos inclusive.
+    -->
+    <title></title>
+  </head>
+  <body>
+<script type="text/javascript">
+  var num1 = Number(prompt('Introduzca el numero 1: '));
+  var num2 = Number(prompt('Introduzca el numero 2: '));
+  var min = Math.min(num1,num2);
+  var max = Math.max(num1,num2);
+
+  for(i=min;i<=max;i++){
+    if(i%8==0)
+    document.write("El numero "+i+" comprendido entre "+min+" y "+max+" es múltiplo de 8.<br/>");
+  }
+</script>
+  </body>
+</html>

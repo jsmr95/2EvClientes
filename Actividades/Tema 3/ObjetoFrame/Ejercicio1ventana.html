@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <form>
+            <input type="button" value="Derecha" onclick="derecha()">
+            <input type="button" value="Izquierda" onclick="izquierda()">
+        </form>
+        <script type="text/javascript">
+            function derecha(){
+                var pixel = opener.document.form1.pixeles.value;
+                ptt = /^\d+$/;
+                if (ptt.test(pixel)){
+                    window.moveBy(pixel,0);
+                }else {
+                    alert('No ha introducito un pixel correcto.');
+                }
+            }
+
+            function izquierda(){
+                var pixel = opener.document.forms[0].elements[0].value;
+                ptt = /^\d+$/;
+                if (ptt.test(pixel)){
+                    window.moveBy(-pixel,0);
+                }else {
+                    alert('No ha introducito un pixel correcto.');
+                }
+            }
+        </script>
+    </body>
+</html>

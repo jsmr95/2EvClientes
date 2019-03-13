@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- Coloca en nuestra página un proyector de imágenes con el que el visitante puede ir viendo una por una
+todas las imágenes de una serie. Las imágenes van cambiando cada cierto tiempo de modo automático. -->
+    </head>
+    <body>
+        <form>
+            <center>
+                <img id="imagen" src="imgEjercicio5/chikorita.png"  width="450" height="350">
+            </center>
+        </form>
+        <script type="text/javascript" >
+        var cont = 0;
+        var fotos = ['chikorita.png','bayleef.png','meganium.png',
+        'cynda.png','cyba.png','typho.png','totodile.png','croconaw.png','feraligart.png'];
+
+
+        function cambia(){
+            if (cont == fotos.length-1) {
+                cont = 0;
+            }else {
+                cont++;
+            }
+            document.forms[0].imagen.src = `imgEjercicio5/${fotos[cont]}`;
+        }
+            var x = setInterval(cambia,1500);
+
+        </script>
+    </body>
+</html>

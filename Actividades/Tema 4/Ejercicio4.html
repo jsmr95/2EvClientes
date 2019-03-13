@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!--4. Crear un vector de 10 elementos con valores aleatorios comprendidos entre 0 y 1000.
+Buscar el menor y el mayor. Generar otro vector a partir de él que deje fuera dichos
+valores. -->
+    </head>
+    <body>
+        <script type="text/javascript">
+        //Arrays
+        var arrayOriginal = [];
+        var arrayModificado = [];
+
+        //Añado 10 elementos
+        for (var i = 0; i < 10; i++) {
+            let num = Math.floor(Math.random()*1001);
+            arrayOriginal[i] = num;
+        }
+        //Muestro el original
+        console.log(`Array Original: ${arrayOriginal}\n`);
+        arrayOriginal.sort(function(a,b){return a-b});
+
+        //Creo el vector que modifico sin el max y el min.
+        arrayModificado = arrayOriginal.slice(1,arrayOriginal.length -1);
+        console.log(arrayModificado);
+        </script>
+    </body>
+</html>

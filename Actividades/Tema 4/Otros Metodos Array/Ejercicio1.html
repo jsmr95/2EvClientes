@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- Crea un array de diez números aleatorios entre 0 y 10.
+            ● Devuelve un array con los valores menores a 8.
+            ● Intercambia los valores impares por la cadena “impar”.-->
+    </head>
+    <body>
+        <script type="text/javascript">
+            var nuevoArray = new Array(10);
+            nuevoArray.fill(0);
+            var array = nuevoArray.map(elem => elem=Math.floor(Math.random()*11));
+            console.log(`Array original: ${array}\n`);
+            var arrayMenor8 = array.filter(elem => elem<8);
+            console.log(`Array con valores menores a 8: ${arrayMenor8}`);
+            var arrayImpar = array.map(function(elem){ if (elem%2 != 0) {
+              return elem = 'impar';
+            }
+            return elem;
+          });
+            console.log(`Array sustituido por impar: '${arrayImpar}'`);
+
+        </script>
+    </body>
+</html>

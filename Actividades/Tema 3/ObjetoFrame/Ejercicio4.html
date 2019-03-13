@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- Escribir un script que simule el lanzamiento de dos dados. Hacer uso de la función Math.random para
+obtener números aleatorios entre 1 y 6. Sumar los valores obtenidos tras lanzar los dados, informar al
+usuario del resultado. Al pulsar el botón Lanzar se realizarán 10 lanzamientos seguidos. Al finalizar se
+mostrará una estadística sobre los resultados obtenidos.-->
+    </head>
+    <body>
+        <form>
+            <input type="text">
+            <input type="text">
+            <input type="button" value="Lanzar" onclick="tiradas()">
+        </form>
+        <script type="text/javascript">
+        var tiros = [];
+
+        function lanzar(){
+            var num = Math.floor(Math.random()*5)+1;
+            document.forms[0].elements[0].value = num;
+            var num = Math.ceil(Math.random()*5)+1;
+            document.forms[0].elements[1].value = num;
+        }
+
+        function tiradas(){
+            for (var i = 1; i <= 10; i++) {
+                lanzar();
+                var tiro1 = parseInt(document.forms[0].elements[0].value);
+                var tiro2 = parseInt(document.forms[0].elements[1].value);
+                console.log(`En la tirada ${i} ha salido--> Dado 1: ${tiro1}. Dado 2: ${tiro2}`);
+                var sum = tiro1 + tiro2;
+                tiros.push(sum);
+                }
+            console.log("-----------------------------------------");
+            recuento();
+        }
+
+        function recuento(){
+            for (var i = 2; i <= 12; i++) {
+                var cont = 0;
+                for (var j = 0; j < tiros.length; j++) {
+                    if (i == tiros[j]){
+                        cont++;
+                    }
+                }
+                console.log(`El número ${i} ha salido ${cont} veces.\n`);
+            }
+        }
+
+
+
+        </script>
+    </body>
+</html>

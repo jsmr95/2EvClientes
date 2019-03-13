@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!--Realiza un script que determine si la cadena de texto que se le pide al usuario es un
+palíndromo, es decir, si se lee de la misma forma desde la izquierda y desde la derecha.
+Ejemplo de palíndromo complejo: "La ruta nos aporto otro paso natural".-->
+    <script type="text/javascript">
+      var frase = prompt('Introduzca una frase para ver si es un palíndromo: ');
+      var sinEspacios = "";
+      var cont = 0;
+
+      for(var i = 0; i < frase.length; i++){
+        if(frase[i] != " "){
+          sinEspacios += frase[i];
+        }
+      }
+      var j = sinEspacios.length-1;
+      
+      for(var i = 0; i < sinEspacios.length-1; i++){
+        if(sinEspacios[i].toUpperCase() == sinEspacios[j--].toUpperCase()){
+          cont++;
+        }
+      }
+      if(cont == sinEspacios.length-1){
+        console.log('Su frase es un palíndromo.');
+      }else {
+          console.log('Su frase no es un palíndromo.');
+        }
+
+    </script>
+  </body>
+</html>

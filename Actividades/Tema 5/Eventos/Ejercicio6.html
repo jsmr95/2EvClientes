@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!--6. Coloque en la aplicación una imagen, y que se cambie por otra imagen, y ésta se mantenga
+mientras el usuario está pulsando algún botón del ratón, cuando suelte debe volver la primera
+imagen. -->
+  <script type="text/javascript">
+    window.onload = function(){
+      window.addEventListener('mousedown', cambia);
+      window.addEventListener('mouseup', cambia);
+    };
+    function cambia(e){
+      if (e.type == 'mousedown') {
+        imagen.src = 'dos.png';
+      }else{
+        imagen.src = 'uno.png';
+      }
+    }
+  </script>
+  </head>
+  <body>
+    <center>
+      <img id='imagen' src="uno.png" align="center">
+    </center>
+  </body>
+</html>

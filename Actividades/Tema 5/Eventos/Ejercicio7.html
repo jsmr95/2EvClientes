@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 7. Realizar un script que muestre la tecla pulsada de teclado, y si se ha pulsado combinada con alt,
+shift o control también lo indique.-->
+  <script type="text/javascript">
+    window.onload = function(){
+      window.addEventListener('keydown',muestra);
+    }
+
+    function muestra(e){
+      if (e.ctrlKey){
+        comprueba('Control', e);
+      }else if (e.altKey){
+        comprueba('Alt', e);
+      }else if (e.shiftKey){
+        comprueba('Shift', e);
+      }else if (e.metaKey){
+        comprueba('Meta', e);
+      }else {
+        console.log(`Se ha pulsado ${e.key}`);
+      }
+    }
+
+    function comprueba(boton,e){
+      var salida = `Se ha pulsado ${boton} + ${e.key}`;
+      if (salida != `Se ha pulsado ${boton} + ${boton}`) {
+        console.log(salida);
+      }
+    }
+  </script>
+  </head>
+  <body>
+
+  </body>
+</html>

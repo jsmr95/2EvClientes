@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!--1) Confeccionar una página que permita abrir otra ventana cuando
+se presiona un botón.
+Dicha ventana debe tener como ancho 600 pixeles y alto 300
+pixeles. La nueva ventana tendrá dos botones que mueva la
+ventana a la izquierda y a la derecha X pixeles (pasados en una caja
+input)
+        -->
+    </head>
+    <body>
+        <form name="form1">
+            <input type="text" name="pixeles">
+            <input type="button" value="Crear ventana" onclick="nuevaVentana()">
+        </form>
+        <script type="text/javascript">
+            function nuevaVentana(){
+                var nueva = window.open('Ejercicio1ventana.html','','width=600,height=300');
+            }
+        </script>
+    </body>
+</html>

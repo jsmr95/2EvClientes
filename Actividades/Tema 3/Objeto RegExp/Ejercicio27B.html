@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 27. Modificar los ejercicios 24,25 y 26 para que el patrón
+    buscado lo pueda decidir el usuario en tiempo de ejecución -->
+  </head>
+  <body>
+    <script type="text/javascript">
+    //MODIFICACION EJERCICIO 25
+    var texto = prompt('Introduzca una frase: ');
+    var pal = prompt(`Introduzca la cadena por la que quieres que acabe
+      las palabras a buscar:`);
+    var ptt = new RegExp(`\\w+${pal}\\b`,"gmi");
+    console.log(texto.match(ptt));
+    </script>
+  </body>
+</html>

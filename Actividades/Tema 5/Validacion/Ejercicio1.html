@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      window.onload = function(){
+        dni.addEventListener('input',compruebaDNI);
+        guardar.addEventListener('click',activaFunciones);
+      }
+      //HACER : HAY QUE LIMPIAR EL CAMPO AL FALLAR, SOLO SE PUEDE CLICAR EL GUARDAR
+      //SI NO HAY NINGUNO ERROR
+
+      // function compruebaDNI(){
+      //   var dni = document.getElementById('dni').value;
+      //   var ptt = /^\d{8}-[a-z]{1}$/gi;
+      //   if (!ptt.test(dni)) {
+      //     console.log('ERROR: El dni no es correcto,su formato debe ser -> 99999999-X');
+      //   }
+      // }
+
+      function compruebaDNI(){
+        var dni = document.getElementById('dni').value;
+        var ptt = /^(\d{1,8}|\d{8}[a-z]{1})$/gi;
+        if (!ptt.test(dni)) {
+          console.log('ERROR: El dni no es correcto,su formato debe ser -> 99999999-X');
+        }
+      }
+
+      function compruebaNombre(){
+        var nombre = document.getElementById('nombre').value;
+        var ptt = /^[a-záéíóúñ]+ ([a-záéíóúñ]+\s)?([a-záéíóúñ]+ )?[a-záéíóúñ]+$/gi;
+        if (!ptt.test(nombre)) {
+          console.log('ERROR: El nombre no es correcto,debes introducir un nombre y un apellido al menos.');
+        }
+      }
+
+      function compruebaFecha(){
+        var fecha = document.getElementById('fecha').value;
+        var ptt = /^([01][0-9]|3[01])\/(0[0-9]|1[12])\/(19[0-9]{2}|(200[0-9]|201[^9]))$/gi;
+        if (!ptt.test(fecha)) {
+          console.log('ERROR: La fecha no es correcta, este es su formato -> dd/mm/yyyy.');
+        }
+      }
+
+      function compruebaEmail(){
+        var email = document.getElementById('email').value;
+        var ptt = /^\w+@[a-zñ]+\.[a-z]{2,3}$/gi;
+        if (!ptt.test(email)) {
+          console.log('ERROR: El email no es correcto -> xxx@yyy.zzz .');
+        }
+      }
+
+      function compruebaWeb(){
+        var web = document.getElementById('web').value;
+        var ptt = /^http:\/\/www\.\w+\.[a-z]{2,3}$/gi;
+        if (!ptt.test(web)) {
+          console.log('ERROR: La pagina web no es correcta -> http://www.xxx.yyy .');
+        }
+      }
+
+      function compruebaContra(){
+        var contra = document.getElementById('contra').value;
+        var ptt = /^\w{8,10}$/gi;
+        if (!ptt.test(contra)) {
+          console.log('ERROR: La contraseña es incorrecta -> Entre 8 y 10 caracteres.');
+        }
+      }
+
+      function compruebaContraConf(){
+        var contra = document.getElementById('contraConf').value;
+        var ptt = /^\w{8,10}$/gi;
+        if (!ptt.test(contra)) {
+          console.log('ERROR: La contraseña a confirmar es incorrecta -> Entre 8 y 10 caracteres.');
+        }
+      }
+
+      function activaFunciones(){
+        // compruebaDNI();
+        compruebaNombre();
+        compruebaFecha();
+        compruebaEmail();
+        compruebaWeb();
+        compruebaContra();
+        compruebaContraConf();
+      }
+    </script>
+  </head>
+  <body>
+    <form action="" method="post">
+      DNI:<input id="dni" type="text" name="" value=""><br><br> <!--Formato: 99999999-X -->
+      Nombre: <input id="nombre" type="text" name="" value=""><br><br><!--Al menos un nombre y un apellido, max 2 nombre y 2 apellidos -->
+      F. Nac: <input id='fecha' type="text" name="" value=""><br><br><!--Formato: dd/mm/yyyy -->
+      E-mail: <input id="email" type="text" name="" value=""><br><br><!--Formato: xxx@yyy.zzz  -->
+      Pag. Web:<input id="web" type="text" name="" value=""><br><br><!--Formato: http://www.xxx.yyy -->
+      Contraseña:<input id="contra" type="password" name="" value=""><br><br><!--Entre 8 y 10 caracteres -->
+      Confirmar contraseña:<input id="contraConf" type="password" name="" value=""><br><br><!--Entre 8 y 10 caracteres -->
+      <input type="submit" id="guardar" value="Guardar">
+      <input type="button" id="ver" value="Ver">
+    </form>
+  </body>
+</html>

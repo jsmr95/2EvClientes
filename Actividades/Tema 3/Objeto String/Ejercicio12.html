@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!--12. Solicitar una frase desde teclado, almacenar cada palabra en un array y mostrar los siguientes datos:
+- La primera palabra de la frase.
+- La última palabra de la frase.
+- El número de palabras de la frase.-->
+  </head>
+  <body>
+    <script type="text/javascript">
+      var frase = prompt('Introduzca una frase. (Finalizar con punto)');
+      var ptt = /\b(.+)\b/;
+      var cadena = "";
+      var lista = [];
+      for (var i = 0; i < frase.length; i++) {
+        if (frase[i] != " " && frase[i] != "." && frase[i] != "," && frase[i] != "?") {
+          cadena += frase[i];
+        }else {
+          lista.push(cadena);
+          cadena = "";
+        }
+      }
+      console.log(`Primera palabra: ${lista[0]}`);
+      console.log(`Última palabra: ${lista[lista.length-1]}`);
+      console.log(`Número de palabras: ${lista.length}`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <form>
+            <input type="color" onchange="cambia()">
+        </form>
+        <script type="text/javascript">
+        function cambia(){
+            var valor = document.forms[0].elements[0].value;
+            window.opener.document.forms[0].elements[0].value = valor;
+            window.opener.document.body.style.background = valor;
+        }
+
+        </script>
+    </body>
+</html>

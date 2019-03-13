@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!--2. Realizar un script que permita mover una caja dentro de la ventana del navegador tanto con las
+teclas de desplazamiento del teclado central como con las del teclado numérico.-->
+        <style>
+            #caja{position:absolute;
+                  width: 100px;
+                  height: 100px;
+                  color:red;
+                  top: 0px;
+                  left:0px;
+                  border-style:solid;}
+        </style>
+        <script type="text/javascript">
+            var coorX = 0;
+            var coorY = 0;
+            window.onload = function(){
+                window.addEventListener('keydown',mueve);
+            };
+
+            function mueve(e){
+                switch (e.key) {
+                    case 'Numpad4':
+                    case 'ArrowLeft':
+                        coorX  = coorX -25;
+                        caja.style.left =coorX +'px';
+                        break;
+                    case 'Numpad6':
+                    case 'ArrowRight':
+                        coorX  = coorX + 25;
+                        caja.style.left =coorX +'px';
+                        break;
+                    case 'Numpad8':
+                    case 'ArrowUp':
+                        coorY  = coorY - 25;
+                        caja.style.top =coorY +'px';
+                        break;
+                    case 'Numpad2':
+                    case 'ArrowDown':
+                        coorY  = coorY + 25;
+                        caja.style.top =coorY +'px';
+                        break;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="caja" name='caja'> </div>
+    </body>
+</html>

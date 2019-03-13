@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 9. Crear una array multidimensional que recoja los nombres de 5 alumnos y las notas
+obtenidas en tres módulos. Dicha información será introducida por el usuario y una vez
+finalizada la recogida de datos se mostrará el contenido del array en forma de tabla.
+Tambíen podras añadir,eleminar alumnos, modificar notas-->
+</head>
+<body>
+    <table border="1">
+    <thead>
+        <th>Alumno</th>
+        <th>DIW</th>
+        <th>EIE</th>
+        <th>DAW</th>
+    </thead>
+    <tbody id="cuerpo">
+
+    </tbody>
+    </table>
+    <script type="text/javascript">
+    var alumnosNotas = [];
+    var alumno = [];
+
+    function notasAlumnos(){
+        for (var i = 0; i < 5 ;i++) {
+            añade(i);
+        }
+    }
+
+    function compruebaNombre(nombre){
+        var ptt = /^[a-zñáéíóú]+( [a-zñáéíóú]+)?$/i;
+        return ptt.test(nombre);
+    }
+    function compruebaNotas(nota){
+        var ptt = /^([1-9](\.[0-9]{1})?|10)$/;
+        return ptt.test(nota);
+    }
+
+    function colocaAlumno(){
+      for (var i = 0; i < alumnosNotas.length; i++) {
+        cuerpo.innerHTML += `<tr id="${i}">`;
+        for (var j = 0; j < alumnosNotas[i].length; j++) {
+          var valor = alumnosNotas[i][j];
+          document.getElementById(`${i}`).innerHTML += `<td>${valor}</td>`;
+        }
+        cuerpo.innerHTML += `</tr>`;
+      }
+    }
+
+    function añade(i){
+      var nombre = prompt(`Introduzca el nombre del alumno ${i+1}:`);
+      while (!compruebaNombre(nombre)){
+          nombre = prompt(`Vuelva a introducir el nombre del alumno ${i+1}:`);
+      }
+      var nota1 = prompt(`Introduzca la nota del modulo 1 :`);
+      while (!compruebaNotas(nota1)){
+          nota1 = prompt(`Vuelva a introducir la nota del modulo 1 (1.0 - 10.0):`);
+      }
+      var nota2 = prompt(`Introduzca la nota del modulo 2 :`);
+      while (!compruebaNotas(nota2)){
+          nota2 = prompt(`Vuelva a introducir la nota del modulo 2 (1.0 - 10.0):`);
+      }
+      var nota3 = prompt(`Introduzca la nota del modulo 3 :`);
+      while (!compruebaNotas(nota3)){
+          nota3 = prompt(`Vuelva a introducir la nota del modulo 3 (1.0 - 10.0):`);
+      }
+      alumno.push(nombre);
+      alumno.push(nota1);
+      alumno.push(nota2);
+      alumno.push(nota3);
+      alumnosNotas.push(alumno);
+      alumno = [];
+    }
+
+    function añadeSolo(){
+      var alumnosColocados = document.getElementsByTagName("tr").length-1; //restamos 1 porque coge el tr de thead
+      añade(alumnosColocados);
+      cuerpo.innerHTML += `<tr id="${alumnosColocados}">`;
+      for (var i = 0; i < alumnosNotas[alumnosColocados].length; i++) {
+        var valor = alumnosNotas[alumnosColocados][i];
+        document.getElementById(`${alumnosColocados}`).innerHTML += `<td>${valor}</td>`;
+      }
+      cuerpo.innerHTML += `</tr>`;
+    }
+
+    function eliminaAlumno(){
+      var nombre = prompt('Introduzca el nombre del alumno a eliminar: ');
+      var encontrado = false;
+      while (!compruebaNombre(nombre)){
+          nombre = prompt(`Nombre no válido, vuelva a introducir el nombre del alumno a eliminar:`);
+      }
+      for (var i = 0; i < alumnosNotas.length; i++) {
+        if (alumnosNotas[i][0].toLowerCase() == nombre.toLowerCase()) {
+          alumnosNotas.splice(i,1);
+          encontrado = true;
+        }
+      }
+      if (encontrado) {
+        cuerpo.innerHTML = "";
+        colocaAlumno();
+      } else {
+        console.log('Error: El alumno no se encuentra en la base de datos.');
+      }
+    }
+
+    function modificaNota(){
+      var nombre = prompt('Introduzca el nombre del alumno a eliminar: ');
+      var alumnoEncontrado = false;
+      while (!compruebaNombre(nombre)){
+          nombre = prompt(`Nombre no válido, vuelva a introducir el nombre del alumno a modificar la nota:`);
+      }
+      var modulo = prompt(`Introduzca uno de los módulos:\nDIW\nEIE\nDAW`);
+      var nota = prompt(`Introduzca la nueva nota del módulo ${modulo.toUpperCase()}`);
+      while (!compruebaNotas(nota)){
+          nota = prompt(`Vuelva a introducir la nueva nota del modulo ${modulo.toUpperCase()}(1.0 - 10.0):`);
+      }
+      for (var i = 0; i < alumnosNotas.length; i++) {
+          if (alumnosNotas[i][0].toLowerCase() == nombre.toLowerCase()) {
+            alumnoEncontrado = true;
+            switch (modulo.toUpperCase()) {
+              case 'DIW':
+                alumnosNotas[i][1] = nota;
+                break;
+              case 'EIE':
+                alumnosNotas[i][2] = nota;
+                break;
+              case 'DAW':
+                alumnosNotas[i][3] = nota;
+                break;
+              default:
+              console.log(`Error: No se encuentra el módulo especificado.`);
+          }
+          break;
+        }
+      }
+      if (alumnoEncontrado) {
+        cuerpo.innerHTML = "";
+        colocaAlumno();
+      } else {
+        console.log('Error: El alumno no se encuentra en la base de datos.');
+      }
+    }
+
+    notasAlumnos();
+    colocaAlumno();
+
+    </script>
+    <form>
+      <input type="button" value="Añadir alumno" onclick="añadeSolo()">
+      <input type="button" value="Eliminar alumno" onclick="eliminaAlumno()">
+      <input type="button" value="Modificar Nota" onclick="modificaNota()">
+    </form>
+</body>
+</html>

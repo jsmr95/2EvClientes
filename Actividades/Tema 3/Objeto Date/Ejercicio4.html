@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!--4. Haz que el ordenador te salude educadamente dándote los buenos días,
+   buenas tardes o buenas noches dependiendo de la hora que sea. -->
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var hoy = new Date();
+    var hora = hoy.getHours();
+
+    if(hora>=8 && hora<14){
+      document.write('Buenos Dias Sr. Gallego.');
+    }else if(hora>=14 && hora<=20){
+      document.write('Buenos Tardes Sr. Gallego');
+    }else {
+      document.write('Buenas Noches Sr. Gallego.');
+    }
+    </script>
+  </body>
+</html>

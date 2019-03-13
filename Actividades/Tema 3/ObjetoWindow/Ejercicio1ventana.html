@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form>
+      <input type="button"  value="MoveTo" onclick='moveTo(500,150)'>
+      <input type="button"  value="MoveBy" onclick='moveBy(0,50)'>
+      <input type="button"  value="ResizeTo" onclick="resizeTo(500,500)">
+      <input type="button"  value="ResizeBy" onclick="resizeBy(-50,-50)">
+      <input type="button"  value="MoveTo a Principal" onclick='opener.moveTo(500,150)'>
+      <input type="button"  value="MoveBy a Principal" onclick='opener.moveBy(0,50)'>
+      <input type="button"  value="ResizeTo a Principal" onclick="opener.resizeTo(500,500)">
+      <input type="button"  value="ResizeBy a Principal" onclick="opener.resizeBy(-50,-50)">
+      <input type="button"  value="Cerrar Ventana" onclick='window.close()'>
+      <input type="button"  value="Cerrar Ventana Principal" onclick='opener.close()'>
+      <!-- No me deja cerrar la ventana principal ni modificar la apariencia, por tema de seguridad. -->
+
+
+    </form>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- 6) Crea una página que contenga un botón que al pulsar se abra una ventana con un input de tipo color.
+Cuando se seleccione un color, éste se aplicará sobre el color de fondo de la página principal y aparecerá en
+un input de tipo text su valor en formato hexadecimal.-->
+    </head>
+    <body>
+        <form>
+            <input type="text">
+            <input type="button" value="Abre Ventana" onclick="abre()">
+        </form>
+        <script type="text/javascript">
+        function abre(){
+            var ventana = window.open('Ejercicio6Color.html','','width=300,height=300');
+        }
+        </script>
+    </body>
+</html>

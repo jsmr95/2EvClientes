@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 30. Extraer del body de un documento html todas las etiquetas junto con su contenido y al final
+un resumen de éstas. En el caso de etiquetas anidadas, mostrar solo las más internas. EJ:
+<h1>Título</h1>
+<p>Lorem ipsum..</p>
+Etiquetas encontradas: h1,p-->
+  </head>
+  <body>
+    <script type="text/javascript">
+    var texto =`<body>
+  <h1> Esto es una prueba <\/h1>
+  <p> Esto prueba de parrafo <\/p>
+  <script>
+    console.log("Probando probando");
+  <\/script>
+  <p>
+  Fin de prueba
+  </p>
+<\/body>`;
+
+    var ptt = /<([a-z]\w*)>\s*.*\s*<\/\1>/gmi;
+    var res = ptt.exec(texto);
+    var salida = 'Etiquetas encontradas: ';
+
+    while (res != null) {
+      salida += res[1]+", ";
+      res = ptt.exec(texto);
+    }
+    console.log(salida);
+    </script>
+  </body>
+</html>

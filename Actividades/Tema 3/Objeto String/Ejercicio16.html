@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!--
+     16. Realiza un script que solicite una frase al usuario. Deberá indicar
+     si aparece en ella o no la palabra indicada por el usuario. En caso de que
+     la encuentre indicar a partir de qué posición se puede encontrar la primera
+     coincidencia. Indicar por cuantos caracteres está formada la palabra buscada
+     y por último sustituirla 'dwecl'.
+    -->
+  </head>
+  <body>
+    <script type="text/javascript">
+    var frase = prompt('Introduzca una frase: ');
+    var palabra = prompt('Ahora una palabra para comprobar si esta en la frase: ');
+    if (!frase.includes(palabra)) {
+      alert(`La palabra '${palabra}' no se ha encontrado en:\n'${frase}'`);
+    } else {
+      console.log(`La palabra se encuentra a partir de la posicion: ${frase.indexOf(palabra)}`);
+      console.log(`La palabra está compuesta por ${palabra.length} caracteres.`);
+      var nuevaFrase = frase.replace(palabra,'dwecl');
+      console.log(`Se ha sustituido por la palabra "dwecl":\n${nuevaFrase}`);
+    }
+    </script>
+  </body>
+</html>

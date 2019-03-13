@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- 7. Queremos implementar la siguiente estructura:
+
+Un Empleado se define con las propiedades nombre (cuyo valor por defecto es una cadena
+vacía), y un departamento (cuyo valor por defecto es "General").
+
+Un Director está basado en Empleado. Añade la propiedad informes (cuyo valor por defecto es
+un array vacío).
+
+Un Trabajador está basado también en Empleado. Añade la propiedad proyectos (cuyo valor por
+defecto es un array vacío).
+
+Un Ingeniero está basado en Trabajador. Añade la propiedad máquina (cuyo valor por defecto es
+una cadena vacía) y sobreescribe la propiedad departamento con el valor "Ingeniería".
+Crear los objetos y casos de prueba necesarios para comprobar el correcto funcionamiento de la jerarquía.-->
+    </head>
+    <body>
+        <script type="text/javascript">
+            //Creo el Objeto Empleado
+            function Empleado(nombre, departamento){
+                this.nombre = nombre || '';
+                this.departamento = departamento || 'General';
+            }
+
+            //Creo el Objeto Director
+            function Director(nombre, departamento, informes){
+                Empleado.call(this, nombre, departamento);
+                this.informes = informes || [];
+            }
+            Director.prototype = new Empleado();
+
+            //Creo el Objeto Trabajador
+            function Trabajador(nombre,departamento, proyectos){
+                Empleado.call(this, nombre,departamento);
+                this.proyectos = proyectos || [];
+            }
+            Trabajador.prototype = new Empleado();
+
+            //Creo el Objeto Ingeniero
+            function Ingeniero(nombre,proyectos,maquina){
+                Trabajador.call(this,nombre,'Ingeniería',proyectos);
+                this.maquina = maquina || '';
+            }
+            Ingeniero.prototype = new Trabajador();
+
+
+            //Creo un metodo mostrar en Empleado para mostrar las propiedades
+            Empleado.prototype.mostrar = function(){
+                for (var i in this) {
+                    if (this.hasOwnProperty(i)) {
+                        console.log(`${i}: ${this[i]}\n`);
+                    }
+                }
+            }
+
+            //COMPROBACIONES
+            var e1 = new Empleado('Pepe');
+            var e2 = new Empleado('Pepa','Jefatura');
+            var dir1 = new Director('Pepito','Jefatura');
+            var dir2 = new Director('Pepito','Jefatura',['InformeA','InformeB']);
+            var tra1 = new Trabajador('Pepita','Sala1');
+            var tra2 = new Trabajador(undefined,['ProyectoA','ProyectoB']);
+            var ing1 = new Ingeniero('Jose',['Proyecto1','Proyecto2']);
+            var ing2 = new Ingeniero('Jose',undefined,'Maquina1');
+
+            console.log('---------EMPLEADO----------');
+            e1.mostrar();
+            e2.mostrar();
+            console.log('---------DIRECTOR----------');
+            dir1.mostrar();
+            dir2.mostrar();
+            console.log('---------TRABAJADOR----------');
+            tra1.mostrar();
+            tra2.mostrar();
+            console.log('---------INGENIERO----------');
+            ing1.mostrar();
+            ing2.mostrar();
+
+
+
+        </script>
+    </body>
+</html>

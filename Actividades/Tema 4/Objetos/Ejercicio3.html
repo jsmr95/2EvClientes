@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- 3. Añadir al objeto Array un método que permita eliminar de
+        un array un determinado valor.-->
+    </head>
+    <body>
+        <script type="text/javascript">
+            Array.prototype.elimina = function(valor){
+                var hay = true;
+                var nuevo = [];
+                for (var i = 0; i < this.length; i++) {
+                    if (this[i] == valor) {
+                        var pos = this.indexOf(valor);
+                        this.splice(pos,1);
+                    }
+                }
+            }
+
+
+            var arr1 = [1,2,3,1,2,5];
+            console.log(arr1);
+            arr1.elimina(2);
+            console.log(arr1);
+
+        </script>
+    </body>
+</html>

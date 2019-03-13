@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- 3. Muestra los meses, días y años que tienes, haciendo uso de
+    los métodos vistos en clase. -->
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var hoy = new Date();
+      var nac = new Date(1995,1,8);
+      var anio = (hoy - nac)/31536000000;
+      var mes = (anio - Math.floor(anio)) * 12;
+      var dia = (mes - Math.floor(mes)) *31;
+
+      console.log(`Usted tiene ${Math.floor(anio)} años, ${Math.floor(mes)} meses y ${Math.floor(dia)} dias.`);
+    </script>
+  </body>
+</html>

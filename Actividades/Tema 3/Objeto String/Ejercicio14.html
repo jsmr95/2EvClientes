@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <!-- 14.Realiza un script que pida al usuario una frase. De ella se extraerá la parte comprendida
+entre unas marcas de inicio y fin (distintas) que serán indicadas por el usuario.
+Modificación 1 : Realizar ahora utilizando la misma marca de inicio y fin.
+Modificación 2: Probar ahora el script con la etiqueta de inicio /* y la de fin */. ¿Es correcto?
+Modifícalo para que funcione con etiquetas de más de un carácter.-->
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var marcaI = prompt('Introduzca una marca de inicio:');
+    var marcaF = prompt('Introduzca una marca de fin:');
+    if(marcaI != marcaF){
+    var frase = prompt('Introduzca una frase:')
+    var ini = frase.indexOf(marcaI,0);
+    var fin = frase.indexOf(marcaF,marcaI);
+
+    console.log(`La frase extraida es: ${frase.substring(ini+ini.length,fin)}`);
+  }else {
+    console.log(`Las marcas de inicio y fin son iguales, debes escoger distintas marcas.`);
+  }
+
+    </script>
+  </body>
+</html>

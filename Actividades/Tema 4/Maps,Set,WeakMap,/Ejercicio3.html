@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 3. Añade en la estructura que corresponda los módulos superados por un determinado
+alumno.
+a. Crea la estructura
+b. Añade nombre de módulos aprobados
+c. Muestra cuantos módulos aprobados tiene el alumno
+d. ¿Tiene aprobado “DWESE”?-->
+  </head>
+  <body>
+    <script type="text/javascript">
+      //a
+      var aprobadas = new Set();
+
+      //b
+      aprobadas.add('DWES');
+      aprobadas.add('DIW');
+      aprobadas.add('DWECL');
+
+      //c
+      console.log('¿Qué módulos tiene aprobados el alumno?: \n');
+      for (mod of aprobadas) {
+        console.log(`${mod}\n`);
+      }
+      console.log(`Son ${aprobadas.size} módulos aprobados.\n`);
+
+      //d
+      console.log('¿Tiene aprobada DWESE?: \n');
+      console.log(`${aprobadas.has('DWESE')}\n`);
+    </script>
+  </body>
+</html>

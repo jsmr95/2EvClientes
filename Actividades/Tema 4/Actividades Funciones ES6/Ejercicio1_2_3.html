@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- 1. Crea un documento html que contenga una lista vacía. Añade una función que permita
+añadirle un número variable de items (valores numéricos).
+2. Añade otra función que permita devolver cuál es el menor de los valores que contiene
+la lista.
+3. Realiza una nueva función para que muestre al usuario el triple del valor de cada
+elemento de la lista (arrow)-->
+    <title></title>
+  </head>
+  <body>
+    <form>
+      <input type="button" value="Añade" onclick="añadir()">
+      <input type="button" value="Menor" onclick="menor()">
+      <input type="button" value="Triple" onclick="triple()">
+    </form>
+    <ul id="lista">
+    </ul>
+
+    <script type="text/javascript">
+
+    function añadir(){
+      opciones = prompt('Introduzca las opciones numéricas separados por coma: ').split(',');
+      for (let i in opciones){
+          opciones[i] = parseInt(opciones[i]);
+      }
+      añadirElementos(...opciones);
+  }
+    function añadirElementos(...opciones){
+        for (let i in opciones) {
+            lista.innerHTML += `<li>${opciones[i]}</li>`;
+          }
+      }
+
+    function menor(){
+        var opciones = document.getElementsByTagName('li');
+        var numeros=[];
+        for (var i=0;i<opciones.length;i++) {
+            numeros.push(Number(opciones[i].innerHTML));
+        }
+        alert(`El menor de todos es ${Math.min(...numeros)}.`);
+    }
+
+    var triple = () => {
+        var opciones = document.getElementsByTagName('li');
+        var numeros=[];
+        for (var i=0;i<opciones.length;i++) {
+            alert(`El triple de ${opciones[i].innerHTML} es ${(opciones[i].innerHTML*3)}`);
+        }
+    }
+
+
+    </script>
+  </body>
+</html>

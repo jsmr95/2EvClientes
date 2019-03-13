@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!--8. Calcula el área de un círculo. El usuario debe indicar el valor del radio y debes mostrar por
+pantalla el siguiente mensaje bien formateado “El área de un círculo es XX.XX cm2”. Calcula
+también el área del triángulo. -->
+  </head>
+  <body>
+    <script type="text/javascript">
+      var radio = parseFloat(prompt('Introduzca el valor del radio del circulo: '));
+      var res = Math.PI * Math.pow(radio,2);
+      console.log('El área del circulo es '+res.toFixed(2)+'.');
+
+      var base = Number(prompt('Introduzca la base del triangulo: '));
+      var h = Number(prompt('Introduzca la altura del triangulo: '));
+      var res1 = base*h/2;
+      console.log('El area del triangulo es '+res1.toPrecision(4));
+    </script>
+  </body>
+</html>

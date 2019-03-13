@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Indica si son correctos o no los siguientes patrones. En el caso de no
+  ser correctos, corrígelos para que lo sean.
+Se consideran válidas las siguientes urls:
+- http://www.google.es
+- https://url.com
+-->
+  </head>
+  <body>
+    <script type="text/javascript">
+    var url = prompt('Introduzca su url a validar:');
+    //MI OPCION
+    // var ptt = /^https?:\/\/(www\.)?\w+\.(es|com)$/i;
+
+    //De todas las opciones de abajo, la primera variable, es la que hay que corregir,
+    // la segunda, es mi correción. Se ha corregido intentando que sea similar,  a
+    //la primera opción.
+
+
+    //OPCION 1 --> Corregida
+    // var ptt = new RegExp(/[http,https{1}]:\/\/[www?]\.[.*]\.[.*]/,i);
+    //
+    // var ptt = new RegExp("^(http|https):\\/\\/(www\\.)?\\w+\\.\\w+$","i");
+
+    //OPCION 2 --> Corregida
+    // var ptt = /^http[s]?\:\/\/\d+\.\d.\d+$/
+
+    // var ptt = /^http[s]?\:\/\/(w{3}\.)?\w+\.\w+$/
+
+    //OPCION 3 --> Corregida
+    // var ptt = /^(http\:\/\/)([w]{3})?[\.]?\w*[\.]\w*$/;
+
+    // var ptt = /^(https?\:\/\/)([w]{3}[\.])?\w+[\.]\w+$/;
+
+    //OPCION 4 --> Corregida
+    // var ptt = /^http\:\/\/(.+)?\..+\..+$/;
+
+    // var ptt = /^https?\:\/\/(www\.)?\w+\..+$/;
+
+    //OPCION 5 --> Corregida
+    // var ptt = /http[s]?\:\/\/[w]*\.?[a-z]+\.[es]?[com]?/;
+
+    // var ptt = /^http[s]?\:\/\/([w]+\.)?[a-z]+\.([es]|[com]$)/;
+
+    //OPCION 6 --> Corregida
+    // var ptt =/^(http:\/\/ | https:\/\/)[A-Za-z]* \.(com|es)$/;
+
+    // var ptt =/^(http:\/\/|https:\/\/)(www\.)?[A-Za-z]+\.(com|es)$/;
+
+    //OPCION 7 --> Corregida
+    // var ptt = new RegExp("^((https|http)://www\.[a-z]+\.[a-z]+)$");
+
+    // var ptt = new RegExp("^((https|http):\\/\\/(www\.)?[a-z]+\.(com|es)$");
+
+    //OPCION 8 --> Corregida
+    // var ptt = /^(http|https)\:\/\/(www\.)?[a-z0-9]+\.[a-z]$/;
+
+    // var ptt = /^(http|https)\:\/\/(www\.)?[a-z0-9]+\.(com|es)$/;
+
+    //OPCION 9 --> Corregida
+    // var ptt = /^http(s)?\:\/\/w{3}\.[a-z0-9]+\.(es|com)$/;
+
+    // var ptt = /^http(s)?\:\/\/(w{3}\.)?[a-z0-9]+\.(es|com)$/;
+
+    //OPCION 10 --> Corregida
+    // var ptt = /^(http|https):\/\/(w{3}\.|)[a-zA-Z0-9]+\.[a-z]{3}$/;
+
+    // ptt = /^(http|https):\/\/(w{3}\.|)[a-zA-Z0-9]+\.[a-z]{3}$/; //se podria poner .com .ees .es
+
+    //OPCION 11 --> Corregida
+    // var ptt = /^(http|https)\:\/\/(www\.)?[a-zA-Z]*\.(es|com)$/
+
+    // ptt = /^(http|https)\:\/\/(www\.)?[a-zA-Z]+\.(es|com)$/
+
+
+    console.log(ptt.test(url));
+
+    </script>
+  </body>
+</html>

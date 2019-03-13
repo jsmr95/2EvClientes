@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 2. Aplicación web que incluya un conjunto de imágenes y en función de la imagen sobre la que se
+seleccione, muestre su descripción a continuación.-->
+  <style media="screen">
+    img{
+      width: 350px;
+      height: 300px;
+    }
+  </style>
+  </head>
+  <body>
+    <img id="cr" src="./imagenes/cr7.jpg">
+    <img id="messi" src="./imagenes/messi.jpg" >
+    <img id="ambos" src="./imagenes/messiCr7.jpeg" >
+    <h3>Mejores jugadores del mundo</h3>
+    <p id="descr">Aqui les mostramos unas imaganes de los mejores jugadores del mundo.</p>
+
+    <script type="text/javascript">
+      function coloca(e){
+        switch (this.id) {
+          case 'cr':
+            cr();
+            break;
+          case 'messi':
+            messi();
+            break;
+          case 'ambos':
+            messiCr();
+            break;
+        }
+
+      }
+      function cr(){
+        var text = document.createTextNode('Cristiano Ronaldo, mejor jugador del planeta, actualmente jugador de la Juventus.');
+        descr.replaceChild(text,descr.firstChild);
+      }
+
+      function messi(){
+        var text = document.createTextNode('Lionel Messi, segundo mejor jugador del planeta, actualmente jugador del F.C.Barcelona .');
+        descr.replaceChild(text,descr.firstChild);
+      }
+
+      function messiCr(){
+        var text = document.createTextNode('Lionel Messi y Cristiano Ronaldo, mejores jugadores del mundo, no los comparemos, disfrutémoslos .');
+        descr.replaceChild(text,descr.firstChild);
+      }
+
+      window.onload = function(){
+        var imagenes = document.getElementsByTagName('img');
+        for (var i = 0; i < imagenes.length; i++) {
+          imagenes[i].addEventListener('click',coloca);
+        }
+      }
+    </script>
+  </body>
+</html>

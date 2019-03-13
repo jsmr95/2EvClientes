@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <!-- 4. Realiza un Listado de FAQs como el que ve a continuación.
+- Desarrolle los enlaces Contacte con nosotros e Imprimir.
+- Los enlaces a las FAQs deben aparecer de color azul.
+- Cuando pulse en una pregunta, debe cerrar la anterior (si es que la había) y mostrar la
+respuesta (añadiéndole una R al principio)
+- Los enlaces ya visitados se pondrán de color rojo.-->
+        <title></title>
+        <style media="screen">
+            p{font-size: 25px;}
+            #p{color: blue;}
+        </style>
+        <script type="text/javascript">
+            window.onload = function(){
+                var ps = document.getElementsByTagName('p');
+                for (var p of ps) {
+                    p.addEventListener('click',activa);
+                }
+                imprimir.addEventListener('click',imprime);
+            }
+
+            function activa(){
+                if (this.children.length == 0) {
+                    desactivar();
+                    var p = document.createElement('p');
+                    p.appendChild(document.createTextNode('Esta es la respusta.'));
+                    this.parentNode.insertBefore(p, this.nextSibling);
+                    this.style = "color:red;";
+                }
+            }
+
+            function desactivar(){
+                var ps = document.getElementsByTagName('p');
+                for (var p of ps) {
+                    if (p.id != 'p') {
+                        document.body.removeChild(p);
+                    }
+                }
+            }
+
+            function imprime(){
+                window.print();
+            }
+
+        </script>
+    </head>
+    <body>
+        <input id="imprimir" type="button" value="Imprimir"><br>
+        <h1>Listado FAQS</h1>
+        <p id="p">¿Barema el tiempo como interino?</p>
+        <p id="p">¿Que tengo que poner en el campo documentación?</p>
+        <p id="p">¿Cómo debo cumplimentar mis peticiones?</p>
+    </body>
+</html>

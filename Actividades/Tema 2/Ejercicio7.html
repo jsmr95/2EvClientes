@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<!--
+7. Realiza un script que muestre mediante mensajes los dígitos que componen un número. Éste tiene que ser menos de 1000.
+ -->
+<body>
+<script type="text/javascript">
+
+	var numero = parseInt(prompt("Porfavor indica el numero: ",""));
+	if (numero<0 || numero>=1000)
+		alert("El numero debe ser mayor que 0 y menor que 1000.");
+
+	var numeroS = numero.toString();
+	alert("Estos son los digitos de su numero: "+numeroS.split(""));
+
+</script>
+
+</body>
+
+</html>

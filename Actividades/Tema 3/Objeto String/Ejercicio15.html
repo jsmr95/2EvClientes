@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 15. Pide al usuario que introduzca una cadena y determinar si
+    esa cadena está formada sólo por letras mayúsculas, sólo por minúsculas
+    o por una mezcla de ambas.-->
+  </head>
+  <body>
+    <script type="text/javascript">
+      var cadena = prompt('Introduzca una cadena.');
+      if (cadena.toUpperCase() == cadena){
+        console.log('Está todo compuesto por MAYÚSCULAS.');
+      }else if (cadena.toLowerCase() == cadena) {
+        console.log('Está todo compuesto por MINÚSCULAS.');
+      }else {
+        console.log('Está compuesto por MAYÚSCULAS y MINÚSCULAS.');
+      }
+    </script>
+  </body>
+</html>

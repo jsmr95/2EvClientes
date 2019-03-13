@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        var obtenerImporteConImpuestos2 = function(importe){
+            var lista = [];
+            if (!isNaN(importe)) {
+                lista[0] = importe;
+                lista[1] = (importe*1.21).toFixed(2);
+                lista[2] = (importe*1.10).toFixed(2);
+                lista[3] = (importe*1.05).toFixed(2);
+            } else {
+                console.log('El importe no es válido.');
+            }
+            return lista;
+        }
+
+        var imp = parseFloat(prompt('Introduzca un importe: '));
+        console.log(obtenerImporteConImpuestos2(imp));
+        </script>
+    </body>
+</html>

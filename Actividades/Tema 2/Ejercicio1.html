@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--
+    Realiza un script que le pregunte alusuario la nota obtenida en un examen,
+    y en función del resultado devuelva "Suspenso", "Aprobado", "Notable" o
+    "Sobresaliente". Realiza otra versión utilizando el operador condicional ?:
+  -->
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<script type="text/javascript">
+  var nota = Number((prompt("Introduzca la nota de su examen: ")));
+  switch (true) {
+    case (nota>=0 && nota <5): alert("Estás suspenso.");
+      break;
+    case (nota>=5 && nota<7): alert("Está Aprobado.");
+      break;
+    case (nota>=7 && nota<9): alert("Tienes un notable.");
+      break;
+    case (nota>=9 && nota<=10): alert("Tienes un Sobresaliente.");
+      break;
+    default: alert("No has introducido una nota válida.")
+
+  }
+</script>
+  </body>
+</html>

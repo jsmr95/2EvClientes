@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      function hora(){
+        var hora = new Date().getHours();
+        var min = new Date().getMinutes();
+        var sec =new Date().getSeconds();
+        document.title = `${hora}:${min}:${sec}`;
+      }
+      
+      var h = setInterval(hora,1000);
+
+      function paraLaHora(){
+        clearInterval(h);
+      }
+    </script>
+    <form>
+      <input type="button" value="Parar la hora" onclick="paraLaHora()">
+    </form>
+  </body>
+</html>

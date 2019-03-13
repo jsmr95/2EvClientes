@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!--4. Desarrolla una aplicación web que funcione de alarma. Ésta tendrá que mostrar la hora actual y
+preguntar al usuario la hora que quiere que te avise. Una vez que llegue a la hora introducida por el
+usuario, debe preguntarle si quiere descansar un poco más y vuelva a mostrar el mensaje a los dos
+minutos.
+    -->
+  </head>
+  <body>
+    <form>
+      <input type="text" > :
+      <input type="text" > :
+      <input type="text" >
+      <br></br> <br></br>
+      <input type="text" > :
+      <input type="text" >
+      <input type="button" value="Activar" onclick="activar()">
+      <input type="button" value="Desactivar" onclick="desactivar()">
+    </form>
+
+    <script type="text/javascript">
+    //PONEMOS EN HORA LOS PRIMEROS INPUTS TEXTS
+      function ponerHora(){
+        var hora = new Date().getHours();
+        if (hora<10){
+          hora = '0'+hora;
+        }
+        var min = new Date().getMinutes();
+        if (min<10){
+          min = '0'+min;
+        }
+        var sec =new Date().getSeconds();
+        if (sec<10){
+          sec = '0'+sec;
+        }
+        document.forms[0].elements[0].value = hora;
+        document.forms[0].elements[1].value = min;
+        document.forms[0].elements[2].value = sec;
+      }
+
+      var x = setInterval(ponerHora,1000);
+
+      //ACTIVAMOS LA ALARMA A LA HORA QUE LE INDIQUEMOS.
+      function activar(){
+        var hora = document.forms[0].elements[3].value;
+        var min = document.forms[0].elements[4].value;
+        var cadena = hora+":"+min;
+        var ptt = /^([01]\d|2[0-3])\:[0-5]\d$/;
+        if (ptt.test(cadena)) {
+          document.forms[0].elements[5].disabled=true;
+        }else {
+          alert('No has introducido una hora correcta, este es el formato hh:mm');
+          document.forms[0].elements[3].value = "";
+          document.forms[0].elements[4].value = "";
+        }
+      }
+ 
+      //SI QUEREMOS SEGUIR DORMIDOS
+      function seguirDormido(){
+          //Modificar esto con el Date.setHours() o Date.setMinutes
+        var hora = new Date();
+        hora.setMinutes(hora.getMinutes()+1);
+        document.forms[0].elements[4].value = hora.getMinutes();
+        document.forms[0].elements[3].value = hora.getHours();
+      }
+
+      //FUNCION DE ALARMA
+      function alarma(){
+        alert('¡¡¡SONANDO ALARMA!!!');
+        if(confirm('¿Quieres dormir un poco más?')){
+          seguirDormido();
+        }else {
+          alert('¡A levantarse!');
+          document.forms[0].elements[5].disabled=false;
+          desactivar();
+        }
+      }
+
+      //COMPROBAMOS CADA SEG SI LA HORA ES IGUAL A LA ALARMA ACTIVADA
+      function comprobando(){
+        var hora = document.forms[0].elements[0].value;
+        var min = document.forms[0].elements[1].value;
+        var hora1 = document.forms[0].elements[3].value;
+        var min1 = document.forms[0].elements[4].value;
+
+          if (hora==hora1 && min1==min && document.forms[0].elements[5].disabled == true) {
+            alarma();
+          }
+      }
+
+      var y = setInterval(comprobando,1000);
+
+      //LIMPIAMOS LA ALARMA Y LA DESACTIVAMOS
+      function desactivar(){
+        document.forms[0].elements[3].value = "";
+        document.forms[0].elements[4].value = "";
+        document.forms[0].elements[5].disabled = false;
+        clearInterval(y);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 28. Buscar dentro de un texto palabras con una longitud determinada.
+     La longitud la decidirá el usuario en tiempo de ejecución -->
+  </head>
+  <body>
+    <script type="text/javascript">
+    var texto = prompt('Introduzca una frase: ');
+    var pal = parseInt(prompt(`Introduzca la longitud de la cadena a buscar:`));
+    var ptt = new RegExp(`(^| )([a-zá-úñ]{${pal}})(?=[ ,\\.;:])`,"gmi");
+    var res = ptt.exec(texto);
+
+    while (res != null) {
+      console.log(res[0]);
+      res = ptt.exec(texto);
+    }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+      <meta charset="utf-8">
+      <title></title>
+      <!-- 6. Definir la siguiente jerarquía de objetos, haciendo uso de los prototipos de JavaScript:
+• Objeto Persona con las propiedades nombre, edad y género, y el método obtDetalles(), que muestra
+por pantalla las propiedades de la persona.
+• Objeto Estudiante, que hereda de Persona, e incluye las propiedades curso y grupo y el método
+registrar().
+• Objeto Profesor, que hereda de Persona, e incluye las propiedades asignatura y nivel y el método
+asignar().
+Crear los objetos y casos de prueba necesarios para comprobar el correcto funcionamiento de la jerarquía.-->
+  </head>
+  <body>
+    <script type="text/javascript">
+      //Creo el Objeto Persona
+      class Persona{
+        constructor(nombre,edad,genero){
+           var _nombre = nombre;
+           var _edad = edad;
+           var _genero = genero;
+
+           this.getNombre = function(){
+             return _nombre;
+           }
+           this.getEdad = function(){
+             return _edad;
+           }
+           this.getGenero = function(){
+             return _genero;
+           }
+        }
+
+        obtDetalles(propiedades = ''){
+          return console.log(`Nombre: ${this.getNombre()}; Edad: ${this.getEdad()}; Sexo: ${this.getGenero()}; ${propiedades}`);
+        }
+
+      }
+
+      //Creo el Objeto Estudiante
+      class Estudiante extends Persona{
+        constructor(nombre,edad,genero,curso,grupo){
+          super(nombre,edad,genero);
+          this.curso = curso;
+          this.grupo = grupo;
+        }
+
+        registrar(){
+          console.log(`El estudiante ${this.getNombre()}, del curso ${this.curso} y del grupo ${this.grupo} ha sido registrado.\n`);
+        }
+        obtDetalles1(){
+          super.obtDetalles(`Curso: ${this.curso}; Grupo: ${this.grupo}`);
+        }
+      }
+      //Creo el Objeto Profesor
+      class Profesor extends Persona{
+        constructor(nombre,edad,genero,asig,nivel){
+        super(nombre,edad,genero);
+        this.asig = asig;
+        this.nivel = nivel;
+      }
+        asignar(){
+          console.log(`El/La profesor/a ${this.getNombre()} ha sido asignado/a a la asignatura '${this.asig}' de nivel ${this.nivel}.\n`);
+        }
+      }
+
+      //COMPROBACIONES
+      var p1 = new Persona('Paco',23,'Masculino');
+      var es1 = new Estudiante('Jose',24,'Masculino',2,'P7');
+      var pro1 = new Profesor('Ana', 30, 'Femenino', 'Clientes','Avanzado');
+      console.log('----------Detalles de las Personas-------------');
+      p1.obtDetalles();
+      console.log("\n");
+      es1.obtDetalles1();
+      console.log("\n");
+      pro1.obtDetalles();
+      console.log("\n");
+      console.log('----------Detalles de los Estudiantes-------------');
+      es1.registrar();
+      console.log('----------Detalles de los Profesores-------------');
+      pro1.asignar();
+
+    </script>
+  </body>
+</html>

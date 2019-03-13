@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<!--
+11. Realiza un script en el que un usuario introduzca un número, y vaya sumando cada una de
+sus cifras y devuelva el resultado.
+Modificaciones:
+ Si el número es decimal suma solo la parte entera
+ Si el número es decimal suma la parte entera y la decimal
+ -->
+<body>
+<script type="text/javascript">
+
+	var num = prompt("Introduzca un numero: ","");
+  var numC = parseFloat(num);
+  var res = 0;
+
+
+  if (isNaN(numC))
+    alert("Debe introducir un numero válido.");
+
+
+    else{
+      for (i=0;i<num.length;i++){
+        aux = parseInt(num.charAt(i));
+				if(isNaN(aux)){
+					break;
+				}else
+        res+=aux;
+      }
+      alert(res);
+    }
+</script>
+
+</body>
+
+</html>

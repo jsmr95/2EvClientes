@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 10.Haz calculadora científica.  -->
+  </head>
+  <body>
+    <script type="text/javascript">
+    var opcion;
+    function menu(){
+      console.log("-------Calculadora------- \n"+
+                      "Pulse 1 para sumar \n"+
+                      "Pulse 2 para restar \n"+
+                      "Pulse 3 para multiplicar \n"+
+                      "Pulse 4 para elevar el primero al segundo \n"+
+                      "Pulse 5 para obtener el mayor de ambos \n"+
+                      "Pulse 6 para salir \n");
+      opcion = parseInt(prompt("Introduzca una opcion: "));
+    }
+
+      while( opcion != 6){
+          menu();
+          if(opcion != 6){
+          var num1 = parseInt(prompt("Introduzca el primer numero: "));
+          var num2 = parseInt(prompt("Introduzca el segundo numero: "));
+        }
+        switch (opcion) {
+          case 1:
+            var res = num1 + num2;
+             alert("La suma de ambos numeros es: "+res);
+            break;
+          case 2:
+            var res = num1 - num2;
+              alert("La resta de ambos numeros es: "+res);
+            break;
+          case 3:
+            var res = num1 * num2;
+              alert("La multiplicacion de ambos numeros es: "+res);
+            break;
+          case 4:
+            var res = Math.pow(num1,num2);
+              alert(num1+" elevado a "+num2+" es igual a:"+res);
+            break;
+          case 5:
+            var res = Math.max(num1,num2);
+              alert("El mayor de ambos numeros es: "+res);
+            break;
+          case 6:
+            var r = confirm("Desea salir de la Calculadora?  ");
+              if (r == true){
+                alert("Decidiste salir de la Calculadora");
+              }else {
+                alert("Quieres continuar en la Calculadora");
+                menu();
+              }
+            break;
+          default: alert("No ha seleccionado una opcion correcta.")
+
+    }
+
+      }
+    </script>
+  </body>
+</html>

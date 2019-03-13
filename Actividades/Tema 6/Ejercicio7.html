@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- 7. Gestión dinámica de una tabla en tiempo de ejecución
+- Debe preguntar el número de filas y columnas
+- Crear tabla.
+- Preguntar los valores de las celdas
+- Poder borrar por filas
+- Poder insertar nuevas filas
+- Personalizar el estilo de la tabla.-->
+    <script type="text/javascript">
+      window.onload = function(){
+        crearTabla();
+        insertar.addEventListener('click', insertarFila);
+        borrar.addEventListener('click', borrarFila);
+        personaliza.addEventListener('click',personalizaTabla);
+      }
+      var columnas = 0;
+
+      function crearTabla(){
+        var filas = parseInt(prompt('Introduzca el número de filas: '));
+        columnas = parseInt(prompt('Introduzca el número de columnas: '));
+        var tabla = document.createElement('TABLE');
+        document.body.insertBefore(tabla,document.getElementById('borrar'));
+        for (var i = 0; i < filas; i++) {
+          var fila = tabla.insertRow(i);
+          for (var j = 0; j < columnas; j++) {
+            fila.insertCell(j);
+          }
+        }
+        rellenaTabla();
+        asignarEvento();
+      }
+
+      function rellenaTabla(){
+        var trs = document.getElementsByTagName('tr');
+        for (var i = 0; i < trs.length; i++) {
+          for (var j = 0; j < trs[i].children.length; j++) {
+            var valor = parseInt(prompt(`Introduzca un valor para la fila ${i+1}, columna ${j+1}: `));
+            var text = document.createTextNode(valor);
+            trs[i].children[j].appendChild(text);
+          }
+        }
+      }
+
+      function rellena(){
+        var valor = parseInt(prompt(`Introduzca un valor para la celda clicada: `));
+        if (this.childNodes.length == 1) {
+          this.replaceChild(document.createTextNode(valor), this.childNodes[0]);
+        }else {
+          this.appendChild(document.createTextNode(valor));
+        }
+      }
+
+      function asignarEvento(){
+        var tds = document.getElementsByTagName('td');
+        for (var i = 0; i < tds.length; i++) {
+          tds[i].removeEventListener('click',rellena);
+          tds[i].addEventListener('click', rellena);
+        }
+      }
+
+      function insertarFila(){
+        var pos = parseInt(prompt('Indique la posicion donde desea colocar la fila: '));
+        var trs = document.getElementsByTagName('tr');
+        var tabla = document.getElementsByTagName('table');
+        if (pos == 1 ||pos-1 <= trs.length ) {
+            compruebaFila(tabla,--pos);
+        }else if (trs.length == 0 && pos != 1) {
+            compruebaFila(tabla,0);
+            alert(`No hay ninguna fila, se creará en la posición 1, no en la ${pos}.`);
+        } else {
+            alert('No existe esa fila.');
+        }
+      }
+
+      function borrarFila(){
+        var pos = parseInt(prompt('Indique la posicion de la fila a borrar: '));
+        var trs = document.getElementsByTagName('tr');
+        if (trs[--pos]) {
+            trs[0].parentNode.removeChild(trs[pos]);
+        }else{
+            alert('No existe esa fila.');
+        }
+      }
+
+      function personalizaTabla(){
+        var estilo = prompt('Introduzca el nombre y valor del atributo de la tabla correctamente: ');
+        var tabla = document.getElementsByTagName('table');
+        tabla[0].setAttribute('style',estilo);
+      }
+
+      function compruebaFila(tabla,pos){
+          var fila = tabla[0].insertRow(pos);
+          for (var i = 0; i < columnas; i++) {
+              fila.insertCell();
+          }
+          asignarEvento();
+      }
+    </script>
+    <style media="screen">
+      table {
+        border: 1px solid;
+      }
+      td{
+        border: 1px solid;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        font-size: 30px;
+      }
+    </style>
+    </head>
+    <body>
+      <input type="button" id="borrar" value="Borrar Fila">
+      <input type="button" id="insertar" value="Insertar Fila">
+      <input type="button" id="personaliza" value="Personalizar Tabla">
+    </body>
+</html>

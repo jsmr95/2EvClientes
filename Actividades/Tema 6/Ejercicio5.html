@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- 5. Realizar un script que simule la siguiente galería de imágenes-->
+  </head>
+  <body>
+    <center>
+        <a href="" id="atras">Atrás</a>
+        <span id="diapositivas">
+          <img id="imagen" src="./imagenes/messiCr7.jpeg" height="200px" width="350px">
+          <img id="imagen" src="./imagenes/cr7.jpg" height="200px" width="350px">
+          <img id="imagen" src="./imagenes/messi.jpg" height="200px" width="350px">
+        </span>
+        <a href="" id="adelante">Adelante</a>
+    </center>
+    <script type="text/javascript">
+      window.onload = function(){
+        borrarImagenes();
+        atras.addEventListener('click',retrasar);
+        adelante.addEventListener('click',avanzar);
+      }
+      var pos = document.getElementById('diapositivas').children.length;
+      var fotos = ['cr7.jpg','messi.jpg','messiCr7.jpeg','cr7-1.jpg',
+                  'cr7-2.jpg','messi-1.jpg','messiCr7-1.jpg'];
+
+      function retrasar(e){
+        e.preventDefault();
+        if (pos == 0) {
+            pos = fotos.length-1;
+            imagen.src = `./imagenes/${fotos[pos]}`;
+        }else{
+            pos--;
+            imagen.src = `./imagenes/${fotos[pos]}`;
+        }
+      }
+
+      function avanzar(e){
+        e.preventDefault();
+          if (pos == fotos.length-1) {
+              pos = 0;
+              imagen.src = `./imagenes/${fotos[pos]}`;
+          }else{
+              pos++;
+              imagen.src = `./imagenes/${fotos[pos]}`;
+          }
+      }
+
+      function borrarImagenes(){
+        var imagenes = document.getElementsByTagName('img');
+        for (var i = 0; i < imagenes.length; i++) {
+          if (diapositivas.children.length > 1) {
+            diapositivas.removeChild(imagenes[i]);
+            i--;
+          }
+        }
+      }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- 4. Realizar un evento que muestre la url que tiene asociada cada imagen, cada vez que se pase el
+ratón por encima de ella.-->
+    <script type="text/javascript">
+        window.onload = function(){
+            var imagenes = document.getElementsByTagName('img');
+            
+            for (var i = 0; i < imagenes.length; i++) {
+                imagenes[i].addEventListener('mouseenter',muestra);
+            }
+
+            function muestra(){
+                alert(this.src);
+            }
+        }
+
+    </script>
+    </head>
+    <body>
+        <img id="imagen"  src="uno.png" width="200" height="200">
+        <img id="imagen1"  src="dos.png" width="200" height="200">
+    </body>
+</html>

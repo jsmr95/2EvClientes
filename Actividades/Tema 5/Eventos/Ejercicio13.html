@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Formulario</title>
+        <script type="text/javascript">
+            window.onload = function(){
+                //Esta funcion aplica eventos a todos los botones de color
+                eventosAColores();
+                eventosADias();
+                rellenarDeNuevo.addEventListener('click',()=>location.reload(true));
+                clickSobreMi.addEventListener('click',()=>location.href = "http://www.google.com");
+            }
+
+            //Esta es la funcion que detecta el chekeado para pintar el background
+            function coloreoBody(e){
+                var colores = document.getElementsByName('color');
+                for (var i = 0; i < colores.length; i++) {
+                    if (this.checked) {
+                        document.body.style.background = this.value;
+                    }
+                }
+            }
+            //Coloca los eventos a los input radios
+            function eventosAColores(){
+                var colores = document.getElementsByName('color');
+                for (var i = 0; i < colores.length; i++) {
+                    this.addEventListener('change',coloreoBody)
+                }
+            }
+
+            //Coloca los eventos a los checkboxes
+            function eventosADias(){
+                var dias = document.getElementsByName('dia');
+                for (var i = 0; i < dias.length; i++) {
+                    dias[i].addEventListener('change',diasSeleccionados);
+                }
+            }
+
+            //funcion que pinta el dia preferente
+            function diasSeleccionados(e){
+                var dias = document.getElementsByName('dia');
+                var seleccionados = [];
+                for (var i = 0; i < dias.length; i++) {
+                    if (dias[i].checked) {
+                        seleccionados.push(dias[i]);
+                    }
+                }
+                if (seleccionados.length == 0) {
+                  document.getElementsByName('diaSeleccionado')[0].value = '';
+                }else {
+                  document.getElementsByName('diaSeleccionado')[0].value = seleccionados[seleccionados.length-1].value;
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+    <div>
+        <fieldset>
+            <legend>Datos Personales</legend>
+            <p align='top'>Introduce tu nombre:<input type="text"></p>
+            <p align='top'>Mensaje:</p><textarea name="name" rows="8" cols="80"></textarea>
+        </fieldset>
+    </div>
+    <form id="form" action="index.html" method="post">
+        <div id="colores">
+            <p>Elige un color:</p>
+            <input type="radio" name="color" value="red">Rojo<br>
+            <input type="radio" name="color" value="green">Verde<br>
+            <input type="radio" name="color" value="blue">Azul<br>
+        </div>
+        <div id="asignatura">
+            <p>Selecciona una asignatura:
+            <select name="asignaturas">
+                <option>Matemáticas</option>
+                <option>Lengua</option>
+                <option>Inglés</option>
+                <option>Francés</option>
+                <option>Ciencias</option>
+            </select></p>
+        </div>
+        <div>
+            <p>Selecciona los dias con disponibilidad:</p>
+            <input type="checkbox" name="dia" value="Lunes">Lunes<br>
+            <input type="checkbox" name="dia" value="Martes">Martes<br>
+            <input type="checkbox" name="dia" value="Miercoles">Miercoles<br>
+            <input type="checkbox" name="dia" value="Jueves">Jueves<br>
+            <input type="checkbox" name="dia" value="Viernes">Viernes<br>
+        </div>
+        <div>
+            <p>Selecciona el dia preferente:</p>
+            <input type="text" name='diaSeleccionado' readonly >
+        </div>
+        <br>
+        <input type="button" id="enviar" value="Haz click para enviar informacion">
+        <input type="button" id="rellenarDeNuevo" value="Comenzar a rellenar de nuevo">
+        <input type="button" id="clickSobreMi" value="Haz click sobre mi">
+    </form>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function obtenerImporteConImpuestos(importe, tipoProducto){
+                var tipoProducto = tipoProducto || 1;
+                var res = 0;
+                if(!isNaN(importe)){
+                switch (tipoProducto) {
+                    case 1:
+                        res = (importe*1.21).toFixed(2);
+                        console.log(`El producto vale ${importe}€, más el +21% --> ${res}`);
+                        break;
+                    case 2:
+                        res = (importe*1.1).toFixed(2);
+                        console.log(`El producto vale ${importe}€, más el +10% --> ${res}`);
+                        break;
+                    case 3:
+                        res = (importe*1.05).toFixed(2);
+                        console.log(`El producto vale ${importe}€, más el +5% --> ${res}`);
+                        break;
+                default:
+                console.log('Ha introducido un Tipo de Producto no válido.');
+                    }
+                }else {
+                    console.log('Ha introducido un importe no válido.');
+            }
+        }
+            //Podriamos crear una variable y pedirla con prompt, pero asi probamos todos los posibles casos mas rapido
+            obtenerImporteConImpuestos(15);
+            obtenerImporteConImpuestos(18,2);
+            obtenerImporteConImpuestos(25,3);
+            obtenerImporteConImpuestos(20,5);
+            obtenerImporteConImpuestos('hola',5);
+        </script>
+    </body>
+</html>

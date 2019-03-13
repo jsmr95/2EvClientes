@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ejercicio Repaso</title>
+
+	</head>
+	<body>
+		<form>
+			<h1>QUIZ DOÑANA</h1>
+			<p>
+				<label>Pregunta 1: ¿Cuál es el número mayor?</label>
+				<input type ='number' readonly>
+				<input type ='number' readonly>
+				<input type ='number' readonly>
+				<input type='text'>
+			</p>
+			<p>
+				<label>Pregunta 2: ¿Cuántas horas han pasado?</label>
+				<input type='text' readonly>
+				<input type='text' >
+			</p>
+			<p>
+				<label>TIEMPO</label>
+				<input type='number'>
+			</p>
+			<input type='button' value="Parar" onclick="comprueba()">
+		</form>
+
+		<script type="text/javascript">
+		document.forms[0].elements[6].value = 10;
+		var tiempo = setInterval(tiempo,1000);
+
+		function paraTiempo(){
+			clearInterval(tiempo);
+		}
+
+		function generaAnio(){
+			var hoy = new Date();
+			var anioActual = hoy.getFullYear();
+			var diff = anioActual - 1970;
+			var num = Math.floor(Math.random()*diff);
+			var anioGenerado = anioActual-num;
+			document.forms[0].elements[4].value = anioGenerado;
+		}
+
+		function generaNumeros(){
+			for (var i = 0; i < 3; i++) {
+				var num = Math.floor(Math.random()*100)+1;
+				document.forms[0].elements[i].value = num;
+			}
+		}
+
+		function abreVentana(mensaje){
+			var ventana = open('ventanaBomba.html','','width=300, height=100');
+			var alto = screen.height;
+			var ancho = screen.width;
+			ventana.moveTo(ancho,alto);
+			ventana.document.write(`<h4>${mensaje}</h4>`);
+		}
+
+		function tiempo(){
+			 if(document.forms[0].elements[6].value != '0') {
+				if (document.forms[0].elements[6].value == "") {
+					cont = 9;
+				}else {
+					cont = document.forms[0].elements[6].value;
+					cont--;
+				}
+				document.forms[0].elements[6].value = cont;
+				cont--;
+			 } else {
+			  paraTiempo();
+				abreVentana('¡¡¡LA BOMBA HA EXPLOTADO!!!');
+
+			}
+		}
+
+		function comprueba(){
+			paraTiempo();
+			var aciertos = 0;
+			var tiempo = 10 - document.forms[0].elements[6].value;
+			var max = Math.max(document.forms[0].elements[0].value,
+												 document.forms[0].elements[1].value,
+												 document.forms[0].elements[2].value);
+			if (document.forms[0].elements[3].value == max) {
+				aciertos++;
+			}
+			var hoy = new Date();
+			var fecha = new Date();
+			fecha.setYear(document.forms[0].elements[4].value);
+			var diff = (hoy - fecha)/3600000;
+			if (document.forms[0].elements[5].value == Math.floor(diff)) {
+				aciertos++;
+			}
+			abreVentana(`Has tardado ${tiempo} segundos\nEl número de respuestas acertadas ha sido: ${aciertos}.`);
+		}
+
+		generaNumeros();
+		generaAnio();
+		</script>
+	</body>
+</html>

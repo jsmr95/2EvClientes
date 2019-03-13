@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!--2) Confeccionar una página que tenga un hipervínculo. Cuando se presione dicho hipervínculo generar un
+valor aleatorio entre 0 y 2. Si se genera el 0 el enlace nos llevará a Hotmail, si se genera un 1 enlazará a
+Gmail en caso de generarse un 2 lo hará a Yahoo.
+        -->
+    </head>
+    <body>
+        <a href="" name="enlace" onclick="genera()" >Hipervínculo</a></a>
+        <script type="text/javascript">
+            function genera(){
+                var num = Math.floor(Math.random()*3);
+                if (num == 0) {
+                    document.links[0].href = "https://outlook.live.com/owa/";
+                }
+                if (num == 1) {
+                    document.links[0].href = "https://mail.google.com/";
+                }
+                if (num == 2) {
+                    document.links[0].href = "https://yahoo.com/";
+                }
+            }
+        </script>
+    </body>
+</html>

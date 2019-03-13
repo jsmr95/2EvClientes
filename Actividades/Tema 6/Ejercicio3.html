@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+      <meta charset="utf-8">
+      <title></title>
+      <!-- 3. Aplicación web que incluya un input de tipo text, donde el usuario irá insertando los datos que
+quiere añadir en una lista desordenada, y se irán mostrando.-->
+  </head>
+  <script type="text/javascript">
+  //HACER EL EJERCICIO TB CON EVENTOS DE TECLADO
+  //y hacer que al pulsar intro, no haga el submit, si no haga la funcioin de añdir
+  //hay que meter los inputs dentro de un form
+    window.onload = function(){
+      insert.addEventListener('click',aniadir);
+      borrar.addEventListener('click',borrarNodos);
+      clonar.addEventListener('click',clonarNodo);
+    }
+      function aniadir(){
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(text.value));
+        document.getElementsByTagName('ul')[0].appendChild(li);
+        text.value = '';
+      }
+
+      function borrarNodos(){
+        var lis = document.getElementsByTagName('li');
+        for (var i = 0; i < lis.length; i++) {
+          if (lis[i].firstChild.nodeValue == '') {
+            .removeChild(lis[i]);
+            i--;
+          }
+        }
+      }
+
+      function clonarNodo(){
+        if (document.getElementsByTagName('ul')[0].children.length != 0) {
+          var clone = document.getElementsByTagName('ul')[0].lastChild.cloneNode(true);
+          document.getElementsByTagName('ul')[0].appendChild(clone);
+        } else {
+          alert('No hay elementos que clonar!');
+        }
+      }
+
+  </script>
+  <body>
+    ¿Elemento a insertar?
+    <input type="text" id="text">
+    <input type="button" id="insert" value="Añadir">
+    <input type="button" id="borrar" value="Borrar nodos vacios">
+    <input type="button" id="clonar" value="Clonar ultimo nodo">
+    <ul>
+    </ul>
+  </body>
+</html>

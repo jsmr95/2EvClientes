@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<!--
+13. Dado un array, con 6 elementos, dos valores booleanos, dos valores numéricos y dos
+cadenas de caracteres. Realizar un script que devuelva la siguiente información:
+Ejemplo: A partir del siguiente array que se proporciona:
+
+var valores = [true, 5, false, "hola", "adios", 2];
+- Determinar cuál de los dos elementos de texto es mayor
+- Determinar el resultado de dos operaciones lógicas realizadas con los elementos
+booleanos
+- Determinar el resultado de dos operaciones aritméticas realizadas con los elementos
+numéricos
+-->
+<body>
+<script type="text/javascript">
+
+var array = [true , 10, false, "casa", 6, "cochecito"];
+var str,  str1;
+var bool,  bool1;
+var num,  num1;
+
+for (i=0; i<array.length;i++){
+  switch(typeof(array[i])){
+    case "string":
+      if(str == undefined){
+        str = array[i];
+      }else {
+        str1 = array[i];
+      }
+      break;
+    case "boolean":
+      if(bool == undefined){
+        bool = array[i];
+      }else {
+        bool1 = array[i];
+      }
+      break;
+    case "number":
+      if(isNaN(num)){
+        num = array[i];
+      }else {
+        num1 = array[i];
+      }
+      break;
+    }
+}
+
+//COMPARO LAS CADENAS
+var cadMayor;
+if(str.length>str1.length){
+  cadMayor = str;
+}else {
+  cadMayor = str1;
+}
+console.log('Texto 1: '+str+'\nTexto 2: '+str1+'\nLa mayor cadena es: '+cadMayor+'.');
+
+//OPERACION LOGICA
+console.log('Boolean 1: '+bool+'\nBoolean 2: '+bool1+'\nOperacion OR entre ambos: '+(bool || bool1)+'.');
+
+//OPERACION ARITMETICA
+console.log('Valor numerico 1: '+num+'\nValor numérico 2: '+num1+'\nOperacion multiplicación entre ambos: '+(num*num1)+'.');
+
+</script>
+
+</body>
+
+</html>

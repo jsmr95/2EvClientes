@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- 20. Valida una matrícula moderna -->
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var matr = prompt('Introduzca una matricula: ');
+      var patt = /^\d{4}\s[b-df-hj-npr-tv-z]{3}$/i;
+      console.log(patt.test(matr));
+    </script>
+  </body>
+</html>

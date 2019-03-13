@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- 19. Valida el ingreso de una hora con el formato hh:mm:ss o hh:mm-->
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var hora = prompt('Introduzca una hora con este formato hh:mm:ss ó hh:mm ->');
+      var ptt = /^([01]\d|2[0-3])\:[0-5]\d(\:[0-5]\d)?$/;
+      console.log(ptt.test(hora));
+    </script>
+  </body>
+</html>

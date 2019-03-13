@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <!-- 1. Crear objeto Vehículo. -->
+    </head>
+    <body>
+
+        <script type="text/javascript">
+        /*a. Crear constructor.
+          b. Crear propiedades: marca, modelo, color y año fabricación.*/
+        function Vehiculo(marca, modelo, color, anyo){
+            this.marca = marca;
+            this.modelo = modelo;
+            this.color = color;
+            this.anyo = anyo;
+            this.arrancar = function(){
+                console.log(`El coche ${marcar} ${modelo} de color ${color} ha arrancado.`);
+            }
+        }
+        //c. Instanciar dos objetos.
+        var vehiculo1 = new Vehiculo('Ferrari','458 Italia','Negro','2018');
+        var vehiculo2 = new Vehiculo('Jaguar','XF','Gris','2018');
+
+        // d. Mostrar por pantalla una propiedad con notación por puntos. Objeto 1 - marca.
+        console.log(`La marca del primer vehiculo es: ${vehiculo1.marca}.\n`);
+        //e. Mostrar por pantalla una propiedad con notación por corchetes. Objeto 2 - color.
+        console.log(`El color del segundo vehiculo es: ${vehiculo2['color']}.\n`);
+
+        // f. Crear el método mostrarDatos
+        Vehiculo.prototype.mostrarDatos = function(){
+          for (var i in this) {
+              if (this.hasOwnProperty(i)) {
+                  console.log(`${i}: ${this[i]}\n`);
+              }
+            }
+         }
+
+         /*g. Crear un método que tenga argumentos acelerar(velocidad). Mostrará por pantalla que el coche ha
+acelerado a la velocidad pasada. */
+        Vehiculo.prototype.acelerar = function(velocidad){
+            console.log(`El coche ha acelerado a la velocidad de ${velocidad}km/h.\n`);
+        }
+        /*h. Crear un método con función interna arrancar. Mostrará por pantalla que el coche de marca _,
+modelo_, de color_ ha arrancado. */
+
+        // i. Asignar una nueva propiedad cilindrada
+        Vehiculo.prototype.cilindrada = '1300cc';
+
+        /*j. Asignar un nuevo método frenar. Mostrará por pantalla que el coche de marca_, modelo_, color_ ha
+parado).*/
+        Vehiculo.prototype.frenar = function(){
+            console.log(`El ${this.marca} ${this.modelo} de color ${this.color} ha parado.\n`);
+        }
+        vehiculo1.frenar();
+        /*k. Realizar las siguientes modificaciones en el Objeto 1 : la propiedad marca no podrá ser eliminadas, la
+propiedad modelo tendrá como valor por defecto ‘xx’ y no podrá ser modificado y los métodos no serán
+enumerables.*/
+
+        Object.defineProperties(vehiculo1,
+            {marca: {configurable: false,
+                     writable: true,
+                     enumberable: true,}
+          , modelo: {value: 'xx',
+                     writable: false,
+                     configurable: true,
+                     enumerable: true}
+          , arrancar: {enumerable: false,
+                       writable: true,
+                        configurable: true,}
+          , acelerar: {enumerable: false,
+                        writable:true,
+                        configurable: true}
+          , frenar: {enumerable: false,
+                     writable: true,
+                     configurable: true}});
+        /*l. Borrar la propiedad marca, modificar la propiedad modelo y volver a mostrar los datos de Objeto 1.*/
+        delete vehiculo1.marca;
+        vehiculo1.modelo = 'Testarossa';
+        vehiculo1.mostrarDatos();
+
+        /*m. Muestra todas las propiedades de Objeto1 utilizando: for in , Object.hasOwnPropertyNames(),
+Object.keys().*/
+        console.log('-------MUESTRO POR FOR IN.--------\n');
+        for (var i in vehiculo1) {
+          console.log(`${i}: ${vehiculo1[i]}.\n`);
+        }
+        console.log('---------MUESTRO POR Object.hasOwnPropertyNames().---------\n');
+        console.log(Object.getOwnPropertyNames(vehiculo1));
+        console.log('-------MUESTRO POR Object.keys().----------\n');
+        var keys = Object.keys(vehiculo1);
+        console.log(keys);
+
+//APARTADO 1.B ME CREO EL ARRAY DE VEHICULOS PARA LUEGO MOSTRARLO EN LA TABLA
+        var vehiculos = [vehiculo1,vehiculo2];
+        var vehiculo3 = new Vehiculo('BMW','Z4','Blanco','2015');
+        var vehiculo4 = new Vehiculo('Masserati','Scaglietti','Rojo','2017');
+        var vehiculo5 = new Vehiculo('Pagani','Sonda','Amarillo','2018');
+        vehiculos.push(vehiculo3, vehiculo4, vehiculo5);
+
+        function creaTabla(){
+          var cabeceraTabla = `
+          <table border='1'>
+           <thead>
+            <td>Marca</td>
+            <td>Modelo</td>
+            <td>Color</td>
+            <td>Año de Fabricación</td>
+          </thead>
+          <tbody> `;
+
+          for (var i = 0; i < vehiculos.length; i++) {
+            cabeceraTabla += `<tr>`;
+            var vehiculo = vehiculos[i];
+            Object.defineProperties(vehiculo, {arrancar: {enumerable: false}});
+            for (var j in vehiculo) {
+              if (vehiculo.hasOwnProperty(j)) {
+                cabeceraTabla += `<td>${vehiculo[j]}</td>`;
+              }
+            }
+            cabeceraTabla += '</tr>';
+          }
+          cabeceraTabla += '</tbody></table>';
+          document.write(cabeceraTabla);
+        }
+
+        creaTabla();
+        </script>
+    </body>
+</html>

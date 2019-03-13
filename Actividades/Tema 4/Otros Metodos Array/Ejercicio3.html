@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- ● Crea un array que contenga al menos 5 tweets.
+1. La primera letra de cada tweet debe estar en mayúscula.
+2. Devolver en un nuevo array las longitudes de cada tweet.
+3. Comprobar si el usuario habla en alguno de sus tweets sobre
+‘software’.
+4. En caso afirmativo, muéstralo por consola
+5. Comprobar si todas las entradas cumplen la antigua
+restricción de Twitter (inferior a 140 caracteres)
+6. ¿Cuántos caracteres ha escrito el usuario de media?-->
+  </head>
+  <body>
+    <script type="text/javascript">
+      var tweets = ['hola que pasa por aqui?',
+                    'iba a salir pero al final no...',
+                    'este tweet es un poco inutil!!',
+                    'Vaya telita con poner tweets sobre SOFTWARE.',
+                    `Este tweet deberia de ser de ciento-cuarenta caracteres de
+                    longitud para que varie alguno, no se si llevo 140 caracteres ya...`];
+                    
+      var tweetsMayus = tweets.map(elem => elem.replace(elem[0],elem[0].toUpperCase()));
+      console.log(tweetsMayus);
+      var longitudTweets = tweets.map(elem => elem.length);
+      console.log(`Longitud de los tweets: ${longitudTweets}`);
+      console.log(`¿Habla algun tweet sobre 'sofware'?: ${tweets.some(elem => elem.toLowerCase().includes('software'))}`);
+      console.log(`Si algún tweet habla, muestralo: ${tweets.filter(elem => elem.toLowerCase().includes('software'))}`);
+      console.log(`Todos los tweets son como máximo de 140 caracteres?: ${longitudTweets.every(elem => elem<=140)}`);
+      console.log(`El usuario de media a escrito ${longitudTweets.reduce((total,num)=>Math.floor((total+num)/tweets.length),0)} caracteres.`);
+    </script>
+  </body>
+</html>
